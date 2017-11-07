@@ -20,4 +20,10 @@
     box-sizing: border-box;
     margin: 0;
   }
+
+  body {
+    max-width: 1250px;
+    margin: 0px auto;
+    border: 1px solid #000;
+  }
 </style>
