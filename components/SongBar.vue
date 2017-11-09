@@ -1,5 +1,5 @@
 <template>
-  <div class="song-bar">
+  <div class="song-bar" :style="{ background: backgroundColor }">
     <div>{{ song.yachtski }}</div>
     <div>
       <span v-html="this.$options.filters.artistURL(song.artists)"></span> - {{ song.title }} ({{ song.year }})
@@ -13,7 +13,14 @@
 </template>
 
 <script>
+  import { jayGradient } from '../mixins/gradient'
+
   export default {
+    data () {
+      return {
+        backgroundColor: this.getColor(this.song.yachtski)
+      }
+    },
     props: {
       song: Object
     },
@@ -21,7 +28,8 @@
       artistURL: function (artists) {
         return artists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
       }
-    }
+    },
+    mixins: [jayGradient]
   }
 </script>
 

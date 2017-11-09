@@ -18,7 +18,7 @@
     },
     created () {
       axios.get('http://localhost:3000/api/v1/songs')
-        .then(response => { this.songs = response.data.sort((s1, s2) => s1.yachtski - s2.yachtski) })
+        .then(response => { this.songs = response.data.sort((s1, s2) => s2.yachtski - s1.yachtski) })
     },
     components: {
       SongBar
