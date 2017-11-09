@@ -1,5 +1,6 @@
 <template>
   <div class="song-list">
+    <a href="#" @click="songSort('yachtski')">Sort</a>
     <div class="song" v-for="song in songs">
       <song-bar :song="song" />
     </div>
@@ -13,7 +14,20 @@
   export default {
     data () {
       return {
-        songs: []
+        songs: [],
+        sortOrder: 'desc',
+        sortBy: 'yachtski'
+      }
+    },
+    methods: {
+      songSort (column) {
+        if (this.sortOrder === 'desc') {
+          this.songs = this.songs.sort((s1, s2) => s1.yachtski - s2.yachtski)
+          this.sortOrder = 'asc'
+        } else {
+          this.songs = this.songs.sort((s1, s2) => s2.yachtski - s1.yachtski)
+          this.sortOrder = 'desc'
+        }
       }
     },
     created () {
