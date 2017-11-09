@@ -1,13 +1,14 @@
 <template>
   <div class="song-list">
     <div class="song" v-for="song in songs">
-      <p>{{ song.title }}</p>
+      <song-bar :song="song" />
     </div>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
+  import SongBar from './SongBar'
 
   export default {
     data () {
@@ -17,10 +18,14 @@
     },
     created () {
       axios.get('http://localhost:3000/api/v1/songs')
-        .then(response => { this.songs = response.data })
+        .then(response => { this.songs = response.data.sort((s1, s2) => s1.yachtski - s2.yachtski) })
+    },
+    components: {
+      SongBar
     }
   }
 </script>
 
 <style>
+
 </style>
