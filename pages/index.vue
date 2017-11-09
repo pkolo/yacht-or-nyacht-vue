@@ -1,6 +1,5 @@
 <template>
   <section class="container">
-    <h1>TEST</h1>
     <song-list/>
   </section>
 </template>
