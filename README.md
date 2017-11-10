@@ -1,6 +1,6 @@
 # yacht-or-nyacht-vue
 
-> Nuxt.js project
+A front-end client for the experimental Yacht or Nyacht API. Made with Vue/Nuxt.
 
 ## Build Setup
 
