@@ -1,16 +1,21 @@
 <template>
   <div class="song-list">
+    <song-list-filter v-model="filterText"/>
     <div class="song-list-header">
       <a href="#" @click="songSort('yachtski')">Yachtski</a>
-      <a href="#" @click="songSort('title')">Title</a>
+      <div>
+        <a href="#" @click="songSort('artists[0].name')">Artist</a> /
+        <a href="#" @click="songSort('title')">Title</a> /
+        <a href="#" @click="songSort('year')">Year</a>
+      </div>
       <a href="#" @click="songSort('scores.jd')">JD</a>
       <a href="#" @click="songSort('scores.hunter')">Hunter</a>
       <a href="#" @click="songSort('scores.steve')">Steve</a>
       <a href="#" @click="songSort('scores.dave')">Dave</a>
       <a href="#" @click="songSort('episode.number')">Ep #</a>
     </div>
-    <div class="song" v-for="song in songs">
-      <song-bar :song="song" />
+    <div class="song" v-for="song in filteredSongs">
+      <song-list-item :song="song" />
     </div>
   </div>
 </template>
@@ -18,14 +23,15 @@
 <script>
   import axios from 'axios'
   import { sortBy } from 'lodash'
-  import SongBar from './SongBar'
+  import SongListFilter from './SongListFilter'
+  import SongListItem from './SongListItem'
 
   export default {
     data () {
       return {
         songs: [],
         sortOrder: 'desc',
-        sortBy: 'yachtski'
+        filterText: ''
       }
     },
     methods: {
@@ -37,6 +43,15 @@
           this.songs = sortBy(this.songs, [column])
           this.sortOrder = 'desc'
         }
+      },
+      updateFilter () {
+        this.filterText = 'sdfsdfsdfsd'
+      }
+    },
+    computed: {
+      filteredSongs () {
+        let filter = new RegExp(this.filterText, 'i')
+        return this.songs.filter(song => (song.title.match(filter) || song.artists[0].name.match(filter)))
       }
     },
     created () {
@@ -44,7 +59,8 @@
         .then(response => { this.songs = sortBy(response.data, 'yachtski').reverse() })
     },
     components: {
-      SongBar
+      SongListFilter,
+      SongListItem
     }
   }
 </script>
@@ -54,5 +70,10 @@
     display: grid;
     grid-template-columns: 1fr 6fr repeat(5, 1fr);
     margin-bottom: 5px;
+  }
+
+  a, a:visited, a:active {
+    text-decoration: none;
+    color: #444;
   }
 </style>
