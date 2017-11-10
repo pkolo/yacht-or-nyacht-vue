@@ -1,5 +1,6 @@
 <template>
   <div class="song-list">
+    <input v-model="filterText" />
     <div class="song-list-header">
       <a href="#" @click="songSort('yachtski')">Yachtski</a>
       <a href="#" @click="songSort('title')">Title</a>
@@ -9,7 +10,7 @@
       <a href="#" @click="songSort('scores.dave')">Dave</a>
       <a href="#" @click="songSort('episode.number')">Ep #</a>
     </div>
-    <div class="song" v-for="song in songs">
+    <div class="song" v-for="song in filteredSongs">
       <song-bar :song="song" />
     </div>
   </div>
@@ -25,7 +26,7 @@
       return {
         songs: [],
         sortOrder: 'desc',
-        sortBy: 'yachtski'
+        filterText: ''
       }
     },
     methods: {
@@ -37,6 +38,12 @@
           this.songs = sortBy(this.songs, [column])
           this.sortOrder = 'desc'
         }
+      }
+    },
+    computed: {
+      filteredSongs () {
+        let filter = new RegExp(this.filterText, 'i')
+        return this.songs.filter(song => (song.title.match(filter) || song.artists[0].name.match(filter)))
       }
     },
     created () {
