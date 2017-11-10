@@ -1,16 +1,16 @@
 <template>
   <div>
-    <header-bar/>
+    <site-header/>
     <nuxt/>
   </div>
 </template>
 
 <script>
-  import HeaderBar from '../components/HeaderBar'
+  import SiteHeader from '../components/SiteHeader'
 
   export default {
     components: {
-      HeaderBar
+      SiteHeader
     }
   }
 </script>
