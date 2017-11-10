@@ -3,7 +3,11 @@
     <input v-model="filterText" />
     <div class="song-list-header">
       <a href="#" @click="songSort('yachtski')">Yachtski</a>
-      <a href="#" @click="songSort('title')">Title</a>
+      <div>
+        <a href="#" @click="songSort('artists[0].name')">Artist</a> /
+        <a href="#" @click="songSort('title')">Title</a> /
+        <a href="#" @click="songSort('year')">Year</a>
+      </div>
       <a href="#" @click="songSort('scores.jd')">JD</a>
       <a href="#" @click="songSort('scores.hunter')">Hunter</a>
       <a href="#" @click="songSort('scores.steve')">Steve</a>
