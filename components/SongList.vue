@@ -3,6 +3,11 @@
     <div class="song-list-header">
       <a href="#" @click="songSort('yachtski')">Yachtski</a>
       <a href="#" @click="songSort('title')">Title</a>
+      <a href="#" @click="songSort('scores.jd')">JD</a>
+      <a href="#" @click="songSort('scores.hunter')">Hunter</a>
+      <a href="#" @click="songSort('scores.steve')">Steve</a>
+      <a href="#" @click="songSort('scores.dave')">Dave</a>
+      <a href="#" @click="songSort('episode.number')">Ep #</a>
     </div>
     <div class="song" v-for="song in songs">
       <song-bar :song="song" />
@@ -12,6 +17,7 @@
 
 <script>
   import axios from 'axios'
+  import { sortBy } from 'lodash'
   import SongBar from './SongBar'
 
   export default {
@@ -25,17 +31,17 @@
     methods: {
       songSort (column) {
         if (this.sortOrder === 'desc') {
-          this.songs = this.songs.sort((s1, s2) => s1[column] > s2[column] ? 1 : -1)
+          this.songs = sortBy(this.songs, [column]).reverse()
           this.sortOrder = 'asc'
         } else {
-          this.songs = this.songs.sort((s1, s2) => s1[column] < s2[column] ? 1 : -1)
+          this.songs = sortBy(this.songs, [column])
           this.sortOrder = 'desc'
         }
       }
     },
     created () {
       axios.get('http://localhost:3000/api/v1/songs')
-        .then(response => { this.songs = response.data.sort((s1, s2) => s2.yachtski - s1.yachtski) })
+        .then(response => { this.songs = sortBy(response.data, 'yachtski').reverse() })
     },
     components: {
       SongBar
