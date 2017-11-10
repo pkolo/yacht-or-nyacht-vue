@@ -9,10 +9,11 @@
 
 <style>
   header {
-    margin-bottom: 40px;
+    margin-bottom: 15px;
   }
 
   .site-name {
+    font-family: "Shrikhand", sans-serif;
     font-size: 50px;
   }
 </style>

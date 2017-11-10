@@ -1,5 +1,5 @@
 <template>
-  <div class="song-bar" :style="{ backgroundColor: this.getColor(song.yachtski) }">
+  <div class="song-list-item" :style="{ backgroundColor: this.getColor(song.yachtski) }">
     <div>{{ song.yachtski }}</div>
     <div>
       <span v-html="this.$options.filters.artistURL(song.artists)"></span> - {{ song.title }} ({{ song.year }})
@@ -29,13 +29,13 @@
 </script>
 
 <style>
-  .song-bar {
+  .song-list-item {
     display: grid;
     grid-template-columns: 1fr 6fr repeat(5, 1fr);
     margin-bottom: 5px;
   }
 
-  .song-bar > * {
+  .song-list-item > * {
     padding: 10px;
   }
 </style>

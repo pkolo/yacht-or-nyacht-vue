@@ -16,16 +16,11 @@
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Lato|Shrikhand');
-
   html {
-    font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+    font-family: "Lato", sans-serif;
     font-size: 16px;
     word-spacing: 1px;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
+    color: #444;
     box-sizing: border-box;
   }
 

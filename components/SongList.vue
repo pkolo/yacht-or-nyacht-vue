@@ -1,6 +1,6 @@
 <template>
   <div class="song-list">
-    <input v-model="filterText" />
+    <song-list-filter v-model="filterText"/>
     <div class="song-list-header">
       <a href="#" @click="songSort('yachtski')">Yachtski</a>
       <div>
@@ -15,7 +15,7 @@
       <a href="#" @click="songSort('episode.number')">Ep #</a>
     </div>
     <div class="song" v-for="song in filteredSongs">
-      <song-bar :song="song" />
+      <song-list-item :song="song" />
     </div>
   </div>
 </template>
@@ -23,7 +23,8 @@
 <script>
   import axios from 'axios'
   import { sortBy } from 'lodash'
-  import SongBar from './SongBar'
+  import SongListFilter from './SongListFilter'
+  import SongListItem from './SongListItem'
 
   export default {
     data () {
@@ -42,6 +43,9 @@
           this.songs = sortBy(this.songs, [column])
           this.sortOrder = 'desc'
         }
+      },
+      updateFilter () {
+        this.filterText = 'sdfsdfsdfsd'
       }
     },
     computed: {
@@ -55,7 +59,8 @@
         .then(response => { this.songs = sortBy(response.data, 'yachtski').reverse() })
     },
     components: {
-      SongBar
+      SongListFilter,
+      SongListItem
     }
   }
 </script>
@@ -65,5 +70,10 @@
     display: grid;
     grid-template-columns: 1fr 6fr repeat(5, 1fr);
     margin-bottom: 5px;
+  }
+
+  a, a:visited, a:active {
+    text-decoration: none;
+    color: #444;
   }
 </style>
