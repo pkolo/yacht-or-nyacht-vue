@@ -71,9 +71,4 @@
     grid-template-columns: 1fr 6fr repeat(5, 1fr);
     margin-bottom: 5px;
   }
-
-  a, a:visited, a:active {
-    text-decoration: none;
-    color: #444;
-  }
 </style>
