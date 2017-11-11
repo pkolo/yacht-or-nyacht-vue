@@ -5,6 +5,8 @@
       <div class="song-info">
         <div class="song-title">{{ song.title }}</div>
         <div class="song-artists">by <span v-html="this.$options.filters.artistURL(song.artists)"></span></div>
+        <player-list :players="song.players" />
+        <player-list :players="song.album.players" />
       </div>
     </div>
   </section>
@@ -14,6 +16,7 @@
   import axios from 'axios'
 
   import YachtskiBlock from '../../components/YachtskiBlock'
+  import PlayerList from '../../components/PlayerList'
 
   export default {
     asyncData ({ params }) {
@@ -22,6 +25,10 @@
         .then((res) => {
           return { song: res.data }
         })
+    },
+    components: {
+      YachtskiBlock,
+      PlayerList
     },
     filters: {
       status: function (yachtski) {
@@ -36,9 +43,6 @@
       artistURL: function (artists) {
         return artists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
       }
-    },
-    components: {
-      YachtskiBlock
     }
   }
 </script>
@@ -57,5 +61,9 @@
 
   .song-artists {
     font-size: 20px;
+  }
+
+  .song-info > * {
+    margin-bottom: 20px;
   }
 </style>
