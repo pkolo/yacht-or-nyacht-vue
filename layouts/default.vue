@@ -38,4 +38,27 @@
     text-decoration: none;
     color: #444;
   }
+
+  .content-header-container {
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .content-header {
+    padding: 20px 10px;
+  }
+
+  .content-header > .title {
+    font-size: 50px;
+  }
+
+  .content-header > .subtitle {
+    font-size: 20px;
+  }
+
+  .subtitle > * + *:before{
+    content: " | ";
+    padding: 0 10px;
+  }
 </style>
