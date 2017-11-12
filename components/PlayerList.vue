@@ -1,5 +1,8 @@
 <template>
   <div class="player-list">
+    <div class="player-list-header">
+      {{ title }}
+    </div>
     <div class="player" v-for="player in players">
       <bullet :score="player.yachtski" />
       <div class="player-name">{{ player.name }}</div>
@@ -13,7 +16,8 @@
 
   export default {
     props: {
-      players: Array
+      players: Array,
+      title: String
     },
     components: {
       Bullet
@@ -22,6 +26,13 @@
 </script>
 
 <style>
+  .player-list-header {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    border-bottom: 1px solid #dedede;
+  }
+
   .player {
     display: grid;
     grid-template-columns: 20px 1fr 2fr;

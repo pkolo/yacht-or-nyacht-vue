@@ -13,8 +13,8 @@
       </div>
       <div class="song-info">
         <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
-        <player-list :players="song.players" />
-        <player-list :players="song.album.players" />
+        <player-list :title="`Track Personnel`" :players="song.players" />
+        <player-list :title="`Album Personnel`" :players="song.album.players" />
       </div>
     </div>
   </section>
