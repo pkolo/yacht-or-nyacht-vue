@@ -71,12 +71,6 @@
 </script>
 
 <style>
-
-  .container {
-      width: 75%;
-      margin: 0 auto;
-  }
-
   .song-header {
     color: #fff;
     text-align: center;
