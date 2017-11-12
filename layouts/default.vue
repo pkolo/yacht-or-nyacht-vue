@@ -33,4 +33,9 @@
     max-width: 1250px;
     margin: 0px auto;
   }
+
+  a, a:visited, a:active {
+    text-decoration: none;
+    color: #444;
+  }
 </style>

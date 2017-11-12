@@ -1,8 +1,10 @@
 <template>
   <div class="song-list-item" :style="{ backgroundColor: this.getColor(song.yachtski) }">
-    <div>{{ song.yachtski }}</div>
+    <div>{{ song.yachtski | roundNum }}</div>
     <div>
-      <span v-html="this.$options.filters.artistURL(song.artists)"></span> - {{ song.title }} ({{ song.year }})
+      <span v-html="this.$options.filters.artistURL(song.artists)"></span> -
+      <a :href="song.url">{{ song.title }}</a>
+      <span>({{ song.year }})</span>
     </div>
     <div :style="{ backgroundColor: this.getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
@@ -22,6 +24,9 @@
     filters: {
       artistURL: function (artists) {
         return artists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
+      },
+      roundNum: function (number) {
+        return number.toFixed(2)
       }
     },
     mixins: [jayGradient]
