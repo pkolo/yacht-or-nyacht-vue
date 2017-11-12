@@ -13,6 +13,13 @@
       </div>
       <div class="song-info">
         <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
+        <div class="song-info-section">
+          <div class="song-info-header">Listen</div>
+          <div class="listen-links">
+            <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="getColor(song.yachtski)" data-episode-id="94fb4fc2-5378-41e1-9836-04df553f8dc6"></div>
+            <iframe height="200" :src="`https://www.youtube.com/embed/${song.yt_id}?rel=0`" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
         <player-list :title="`Track Personnel`" :players="song.players" />
         <player-list :title="`Album Personnel`" :players="song.album.players" />
       </div>
@@ -65,11 +72,7 @@
       margin: 0 auto;
   }
 
-  .song-container {
-  }
-
   .song-header {
-    margin-bottom: 20px;
     color: #fff;
     text-align: center;
   }
@@ -91,45 +94,6 @@
     padding: 0 10px;
   }
 
-  .yachtski-container {
-    width: 60%;
-    margin: 0 auto;
-    background: #fff;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-  }
-
-  .yachtski-big-score {
-    text-align: center;
-  }
-
-  .yachtski-hosts {
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 5px;
-    padding: 5px;
-  }
-
-  .yachtski-host-score {
-    display: grid;
-    grid-template-columns: 20px 1fr 1fr;
-    grid-gap: 20px;
-    border-bottom: 1px solid #dedede;
-  }
-
-  .yachtski-host-score:last-child {
-    border-bottom: 0px solid #fff;
-  }
-
-  .yachtski-score {
-    font-size: 50px;
-  }
-
-  .yachtski-status {
-    font-size: 20px;
-  }
-
   .white {
     color: #fff;
   }
@@ -138,7 +102,20 @@
     padding: 0 20px;
   }
 
-  .song-info > * {
-    margin-bottom: 20px;
+  .song-info-section {
+    margin-bottom: 40px;
+  }
+
+  .song-info-header {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    border-bottom: 1px solid #dedede;
+  }
+
+  .listen-links {
+    display: grid;
+    grid-template-columns: 575px 1fr;
+    grid-gap: 20px;
   }
 </style>

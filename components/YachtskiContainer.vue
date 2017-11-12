@@ -6,24 +6,24 @@
     </div>
     <div class="yachtski-hosts">
       <div class="yachtski-host-score">
-        <bullet :score="scores.hunter" />
-        <span>JD</span>
-        <span>{{ scores.jd }}</span>
+        <bullet :score="scores.jd" />
+        <div>JD</div>
+        <div class="host-score">{{ scores.jd }}</div>
       </div>
       <div class="yachtski-host-score">
         <bullet :score="scores.hunter" />
-        <span>Hunter</span>
-        <span>{{ scores.hunter }}</span>
+        <div>Hunter</div>
+        <div class="host-score">{{ scores.hunter }}</div>
       </div>
       <div class="yachtski-host-score">
-        <bullet :score="scores.hunter" />
-        <span>Steve</span>
-        <span>{{ scores.steve }}</span>
+        <bullet :score="scores.steve" />
+        <div>Steve</div>
+        <div class="host-score">{{ scores.steve }}</div>
       </div>
       <div class="yachtski-host-score">
-        <bullet :score="scores.hunter" />
-        <span>Dave</span>
-        <span>{{ scores.dave }}</span>
+        <bullet :score="scores.dave" />
+        <div>Dave</div>
+        <div class="host-score">{{ scores.dave }}</div>
       </div>
     </div>
   </div>
@@ -63,4 +63,46 @@
 </script>
 
 <style>
+  .yachtski-container {
+    width: 60%;
+    margin: 30px auto;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .yachtski-big-score {
+    text-align: center;
+  }
+
+  .yachtski-hosts {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 5px;
+    padding: 5px 15px 5px 5px;
+  }
+
+  .yachtski-host-score {
+    display: grid;
+    grid-template-columns: 20px 1fr 1fr;
+    grid-gap: 20px;
+    border-bottom: 1px solid #dedede;
+  }
+
+  .yachtski-host-score:last-child {
+    border-bottom: 0px solid #fff;
+  }
+
+  .yachtski-score {
+    font-size: 50px;
+  }
+
+  .yachtski-status {
+    font-size: 20px;
+  }
+
+  .host-score {
+    text-align: right;
+  }
 </style>
