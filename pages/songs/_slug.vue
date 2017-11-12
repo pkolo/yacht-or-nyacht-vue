@@ -12,50 +12,7 @@
         </div>
       </div>
       <div class="song-info">
-        <div class="yachtski-container" :style="{ border: `1px ${getColor(song.yachtski)} solid` }">
-          <div class="yachtski-big-score">
-            <div class="yachtski-score" :style="{ color: getColor(song.yachtski) }">{{ song.yachtski}}</div>
-            <div class="yachtski-status" :style="{ color: getColor(song.yachtski) }">{{ song.yachtski | status }}</div>
-          </div>
-          <div class="yachtski-hosts">
-            <div class="yachtski-host-score">
-              <div class="bullet">
-                <svg height="20" width="20">
-                  <rect width="20" height="20" :style="{ fill: getColor(song.scores.jd) }" />
-                </svg>
-              </div>
-              <span>JD</span>
-              <span>{{ song.scores.jd }}</span>
-            </div>
-            <div class="yachtski-host-score">
-              <div class="bullet">
-                <svg height="20" width="20">
-                  <rect width="20" height="20" :style="{ fill: getColor(song.scores.hunter) }" />
-                </svg>
-              </div>
-              <span>Hunter</span>
-              <span>{{ song.scores.hunter }}</span>
-            </div>
-            <div class="yachtski-host-score">
-              <div class="bullet">
-                <svg height="20" width="20">
-                  <rect width="20" height="20" :style="{ fill: getColor(song.scores.steve) }" />
-                </svg>
-              </div>
-              <span>Steve</span>
-              <span>{{ song.scores.steve }}</span>
-            </div>
-            <div class="yachtski-host-score">
-              <div class="bullet">
-                <svg height="20" width="20">
-                  <rect width="20" height="20" :style="{ fill: getColor(song.scores.dave) }" />
-                </svg>
-              </div>
-              <span>Dave</span>
-              <span>{{ song.scores.dave }}</span>
-            </div>
-          </div>
-        </div>
+        <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
         <player-list :players="song.players" />
         <player-list :players="song.album.players" />
       </div>
@@ -68,7 +25,7 @@
 
   import { jayGradient } from '../../mixins/gradient'
 
-  import YachtskiBlock from '../../components/YachtskiBlock'
+  import YachtskiContainer from '../../components/YachtskiContainer'
   import PlayerList from '../../components/PlayerList'
 
   export default {
@@ -80,7 +37,7 @@
         })
     },
     components: {
-      YachtskiBlock,
+      YachtskiContainer,
       PlayerList
     },
     filters: {

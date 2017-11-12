@@ -1,11 +1,7 @@
 <template>
   <div class="player-list">
     <div class="player" v-for="player in players">
-      <div class="bullet">
-        <svg height="20" width="20">
-          <rect width="20" height="20" :style="{ fill: getColor(player.yachtski) }" />
-        </svg>
-      </div>
+      <bullet :score="player.yachtski" />
       <div class="player-name">{{ player.name }}</div>
       <div class="player-roles">{{ player.roles }}</div>
     </div>
@@ -13,13 +9,15 @@
 </template>
 
 <script>
-  import { jayGradient } from '../mixins/gradient'
+  import Bullet from './Bullet'
 
   export default {
     props: {
       players: Array
     },
-    mixins: [jayGradient]
+    components: {
+      Bullet
+    }
   }
 </script>
 
