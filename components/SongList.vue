@@ -1,6 +1,6 @@
 <template>
   <div class="song-list">
-    <song-list-filter v-model="filterText"/>
+    <song-list-filter v-show="showFilter" v-model="filterText"/>
     <div class="song-list-header">
       <a href="#" @click="songSort('yachtski')">Yachtski</a>
       <div>
@@ -33,6 +33,9 @@
         sortOrder: 'desc',
         filterText: ''
       }
+    },
+    props: {
+      showFilter: Boolean
     },
     methods: {
       songSort (column) {

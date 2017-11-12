@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <song-list/>
+    <song-list v-bind:showFilter="true"/>
   </section>
 </template>
 
