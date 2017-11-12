@@ -4,8 +4,8 @@
     <div>
       <span v-html="this.$options.filters.artistURL(song.artists)"></span> -
       <a :href="song.url">{{ song.title }}</a>
-      <span>({{ song.year }})</span>
     </div>
+    <div>{{ song.year }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.steve) }">{{ song.scores.steve }}</div>
@@ -36,7 +36,7 @@
 <style>
   .song-list-item {
     display: grid;
-    grid-template-columns: 1fr 6fr repeat(5, 1fr);
+    grid-template-columns: 1fr 6fr repeat(6, 1fr);
     margin-bottom: 5px;
   }
 

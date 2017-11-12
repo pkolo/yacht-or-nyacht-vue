@@ -61,4 +61,9 @@
     content: " | ";
     padding: 0 10px;
   }
+
+  .content-container {
+    padding: 0 20px;
+  }
+
 </style>

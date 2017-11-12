@@ -4,10 +4,10 @@
     <div class="song-list-header">
       <a href="#" @click="songSort('yachtski')">Yachtski</a>
       <div>
-        <a href="#" @click="songSort('artists[0].name')">Artist</a> /
-        <a href="#" @click="songSort('title')">Title</a> /
-        <a href="#" @click="songSort('year')">Year</a>
+        <a href="#" @click="songSort('artists[0].name')">Artist</a> -
+        <a href="#" @click="songSort('title')">Title</a>
       </div>
+      <a href="#" @click="songSort('year')">Year</a>
       <a href="#" @click="songSort('scores.jd')">JD</a>
       <a href="#" @click="songSort('scores.hunter')">Hunter</a>
       <a href="#" @click="songSort('scores.steve')">Steve</a>
@@ -63,7 +63,8 @@
 <style>
   .song-list-header {
     display: grid;
-    grid-template-columns: 1fr 6fr repeat(5, 1fr);
+    grid-template-columns: 1fr 6fr repeat(6, 1fr);
     margin-bottom: 5px;
+    padding-left: 10px;
   }
 </style>
