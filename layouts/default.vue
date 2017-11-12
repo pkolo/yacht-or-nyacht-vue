@@ -47,6 +47,7 @@
 
   .content-header {
     padding: 20px 10px;
+    margin-bottom: 40px;
   }
 
   .content-header > .title {
@@ -64,6 +65,17 @@
 
   .content-container {
     padding: 0 20px;
+  }
+
+  .content-section {
+    margin-bottom: 40px;
+  }
+
+  .content-section-header {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    border-bottom: 1px solid #dedede;
   }
 
 </style>

@@ -12,7 +12,12 @@
       </div>
     </div>
     <div class="content-container">
-      <song-list v-bind:showFilter="false" :songs="personnel.songs_as_artist" />
+      <div class="content-section">
+        <div class="content-section-header">Artist Tracklist</div>
+        <song-list v-bind:showFilter="false" :songs="personnel.songs_as_artist" />
+      </div>
+      <credit-list :credits="personnel.song_credits" :title="`Song Contributions`" />
+      <credit-list :credits="personnel.album_credits" :title="`Album Contributions`" />
     </div>
   </div>
 </template>
@@ -23,6 +28,7 @@
   import { jayGradient } from '../../mixins/gradient'
 
   import SongList from '../../components/SongList'
+  import CreditList from '../../components/CreditList'
 
   export default {
     asyncData ({ params }) {
@@ -33,7 +39,8 @@
         })
     },
     components: {
-      SongList
+      SongList,
+      CreditList
     },
     filters: {
       roundNum: function (number) {
