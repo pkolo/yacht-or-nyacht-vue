@@ -21,7 +21,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import { sortBy } from 'lodash'
   import SongListFilter from './SongListFilter'
   import SongListItem from './SongListItem'
@@ -29,13 +28,13 @@
   export default {
     data () {
       return {
-        songs: [],
         sortOrder: 'desc',
         filterText: ''
       }
     },
     props: {
-      showFilter: Boolean
+      showFilter: Boolean,
+      songs: Array
     },
     methods: {
       songSort (column) {
@@ -46,9 +45,6 @@
           this.songs = sortBy(this.songs, [column])
           this.sortOrder = 'desc'
         }
-      },
-      updateFilter () {
-        this.filterText = 'sdfsdfsdfsd'
       }
     },
     computed: {
@@ -56,10 +52,6 @@
         let filter = new RegExp(this.filterText, 'i')
         return this.songs.filter(song => (song.title.match(filter) || song.artists[0].name.match(filter)))
       }
-    },
-    created () {
-      axios.get('http://localhost:3000/api/v1/songs')
-        .then(response => { this.songs = sortBy(response.data, 'yachtski').reverse() })
     },
     components: {
       SongListFilter,

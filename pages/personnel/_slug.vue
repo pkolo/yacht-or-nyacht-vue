@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="content-container">
-      
+      <song-list v-bind:showFilter="false" :songs="personnel.songs_as_artist" />
     </div>
   </div>
 </template>
@@ -22,6 +22,8 @@
 
   import { jayGradient } from '../../mixins/gradient'
 
+  import SongList from '../../components/SongList'
+
   export default {
     asyncData ({ params }) {
       let id = params.slug.match(/\d+/)
@@ -29,6 +31,9 @@
         .then((res) => {
           return { personnel: res.data }
         })
+    },
+    components: {
+      SongList
     },
     filters: {
       roundNum: function (number) {
