@@ -1,7 +1,7 @@
 <template>
   <div class="yachtski-container" :style="{ border: `1px ${yachtskiColor()} solid` }">
     <div class="yachtski-big-score">
-      <div class="yachtski-score" :style="{ color: yachtskiColor() }">{{ yachtski}}</div>
+      <div class="yachtski-score" :style="{ color: yachtskiColor() }">{{ yachtski | roundNum }}</div>
       <div class="yachtski-status" :style="{ color: yachtskiColor() }">{{ yachtski | status }}</div>
     </div>
     <div class="yachtski-hosts">
@@ -49,6 +49,9 @@
         } else {
           return 'Nyacht Rock'
         }
+      },
+      roundNum: function (number) {
+        return +number.toFixed(2)
       }
     },
     props: {
