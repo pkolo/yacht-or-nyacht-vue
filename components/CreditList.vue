@@ -6,8 +6,11 @@
     <div class="credit-list">
       <div class="credit" v-for="credit in credits">
         <bullet :score="credit.media.yachtski" />
-        <div class="credit-title">{{ credit.media.title }}</div>
-        <div class="credit-roles">{{ credit.roles.join(', ') }}</div>
+        <div class="credit-title">
+          <span v-html="$options.filters.artistURL(credit.media.artists)"></span> -
+          <a :href="credit.media.url">{{ credit.media.title }}</a>
+        </div>
+        <div class="credit-roles">{{ credit.roles }}</div>
       </div>
     </div>
   </div>
@@ -23,6 +26,11 @@
     },
     components: {
       Bullet
+    },
+    filters: {
+      artistURL: function (artists) {
+        return artists.map(a => `<a class="white" href=${a.url}>${a.name}</a>`).join(', ')
+      }
     }
   }
 </script>

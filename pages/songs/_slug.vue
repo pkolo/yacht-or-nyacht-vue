@@ -56,9 +56,6 @@
         } else {
           return 'Nyacht Rock'
         }
-      },
-      artistURL: function (artists) {
-        return artists.map(a => `<a class="white" href=${a.url}>${a.name}</a>`).join(', ')
       }
     },
     mixins: [jayGradient]
