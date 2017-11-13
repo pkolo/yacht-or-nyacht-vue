@@ -1,0 +1,46 @@
+<template>
+  <div class="container">
+    <form @submit.prevent="login">
+      <input type="text" placeholder="username" v-model="formData.name" />
+      <input type="password" placeholder="password" v-model="formData.password" />
+      <button type="submit">Submit</button>
+    </form>
+    <div class="errors" v-if="errors.length > 0">
+      <div class="error-msg" v-for="error in errors">
+        <p>{{ error.detail }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import axios from 'axios'
+
+  export default {
+    data () {
+      return {
+        formData: {
+          name: '',
+          password: ''
+        },
+        errors: []
+      }
+    },
+    methods: {
+      login () {
+        axios.post('http://localhost:3000/api/v1/login', this.formData)
+          .then(res => window.localStorage.setItem('yonToken', res.data.token))
+          .then(console.log(localStorage.getItem('yonToken')))
+          .catch(error => {
+            this.errors = error.response.data.errors
+          })
+      },
+      clearErrors () {
+        this.errors = []
+      }
+    }
+  }
+</script>
+
+<style>
+</style>
