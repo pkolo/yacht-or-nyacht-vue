@@ -30,7 +30,8 @@
       return {
         sortDesc: true,
         sortColumn: 'yachtski',
-        filterText: ''
+        filterText: '',
+        sortedSongs: this.songs
       }
     },
     props: {
@@ -41,10 +42,10 @@
       songSort (column) {
         if (column === this.sortColumn) {
           this.sortDesc = !this.sortDesc
-          this.songs = orderBy(this.songs, [this.sortColumn], [this.sortValue()])
+          this.sortedSongs = orderBy(this.sortedSongs, [this.sortColumn], [this.sortValue()])
         } else {
           this.sortColumn = column
-          this.songs = orderBy(this.songs, [this.sortColumn], [this.sortValue()])
+          this.sortedSongs = orderBy(this.sortedSongs, [this.sortColumn], [this.sortValue()])
         }
       },
       sortValue () {
@@ -58,7 +59,7 @@
     computed: {
       filteredSongs () {
         let filter = new RegExp(this.filterText, 'i')
-        return this.songs.filter(song => (song.title.match(filter) || song.artists[0].name.match(filter)))
+        return this.sortedSongs.filter(song => (song.title.match(filter) || song.artists[0].name.match(filter)))
       }
     },
     components: {
