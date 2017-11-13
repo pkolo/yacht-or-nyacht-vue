@@ -25,9 +25,4 @@
   nav > * {
 
   }
-
-  .site-name {
-    font-family: "Shrikhand", sans-serif;
-    font-size: 24px;
-  }
 </style>

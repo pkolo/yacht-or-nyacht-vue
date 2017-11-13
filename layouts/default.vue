@@ -39,6 +39,11 @@
     color: #444;
   }
 
+  .site-name {
+    font-family: "Shrikhand", sans-serif;
+    font-size: 24px;
+  }
+
   .content-header-container {
     padding: 10px;
     color: #fff;
