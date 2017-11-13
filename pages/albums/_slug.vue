@@ -17,7 +17,10 @@
         <div class="content-section-header">Album Tracklist</div>
         <song-list v-bind:showFilter="false" :songs="album.songs" />
       </div>
-      <player-list :players="album.players" title="`Album Credits`" />
+      <div class="content-section">
+        <div class="content-section-header">Album Personnel</div>
+        <player-list :players="album.players" />
+      </div>
     </div>
   </div>
 </template>

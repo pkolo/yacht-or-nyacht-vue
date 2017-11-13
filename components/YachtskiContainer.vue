@@ -68,7 +68,8 @@
 <style>
   .yachtski-container {
     width: 60%;
-    margin: 30px auto;
+    margin: 0 auto;
+    margin-bottom: 40px;
     background: #fff;
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -1,27 +1,31 @@
 <template>
-  <section class="container">
-    <div class="song-container" :style="{ border: `1px ${getColor(song.yachtski)} solid` }">
-      <div class="song-header">
-        <div class="song-main-info" :style="{ background: getColor(song.yachtski) }">
-          <div class="song-title">{{ song.title }}</div>
-          <div class="song-subtitle">
-            <span v-html="this.$options.filters.artistURL(song.artists, song.featured_artists)"></span>
-            <span><i>{{ song.album.title }}</i></span>
-            <span>{{ song.year }}</span>
-          </div>
+  <section class="container" :style="{ border: `1px ${getColor(song.yachtski)} solid` }">
+    <div class="content-header-container">
+      <div class="content-header" :style="{ background: getColor(song.yachtski) }">
+        <div class="title">{{ song.title }}</div>
+        <div class="subtitle">
+          <span v-html="this.$options.filters.artistURL(song.artists, song.featured_artists)"></span>
+          <span><i>{{ song.album.title }}</i></span>
+          <span>{{ song.year }}</span>
         </div>
       </div>
-      <div class="song-info">
-        <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
-        <div class="song-info-section">
-          <div class="song-info-header">Listen</div>
-          <div class="listen-links">
-            <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="getColor(song.yachtski)" data-episode-id="94fb4fc2-5378-41e1-9836-04df553f8dc6"></div>
-            <iframe height="200" :src="`https://www.youtube.com/embed/${song.yt_id}?rel=0`" frameborder="0" allowfullscreen></iframe>
-          </div>
+    </div>
+    <div class="content-container">
+      <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
+      <div class="content-section">
+        <div class="content-section-header">Listen</div>
+        <div class="content-section listen-links">
+          <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="getColor(song.yachtski)" data-episode-id="94fb4fc2-5378-41e1-9836-04df553f8dc6"></div>
+          <iframe height="200" :src="`https://www.youtube.com/embed/${song.yt_id}?rel=0`" frameborder="0" allowfullscreen></iframe>
         </div>
-        <player-list :title="`Track Personnel`" :players="song.players" />
-        <player-list :title="`Album Personnel`" :players="song.album.players" />
+      </div>
+      <div class="content-section">
+        <div class="content-section-header">Song Personnel</div>
+        <player-list :players="song.players" />
+      </div>
+      <div class="content-section">
+        <div class="content-section-header">Album Personnel</div>
+        <player-list :players="song.album.players" />
       </div>
     </div>
   </section>
@@ -71,47 +75,6 @@
 </script>
 
 <style>
-  .song-header {
-    color: #fff;
-    text-align: center;
-  }
-
-  .song-main-info {
-    padding: 20px 10px;
-  }
-
-  .song-title {
-    font-size: 50px;
-  }
-
-  .song-subtitle {
-    font-size: 20px;
-  }
-
-  .song-subtitle > * + *:before{
-    content: " | ";
-    padding: 0 10px;
-  }
-
-  .white {
-    color: #fff;
-  }
-
-  .song-info {
-    padding: 0 20px;
-  }
-
-  .song-info-section {
-    margin-bottom: 40px;
-  }
-
-  .song-info-header {
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-    font-size: 18px;
-    border-bottom: 1px solid #dedede;
-  }
-
   .listen-links {
     display: grid;
     grid-template-columns: 575px 1fr;
