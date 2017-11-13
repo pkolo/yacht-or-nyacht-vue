@@ -28,11 +28,16 @@
     },
     methods: {
       login () {
+        this.errors = []
         axios.post(`${process.env.baseUrl}/login`, this.formData)
           .then(res => window.localStorage.setItem('yonToken', res.data.token))
-          .then(console.log(localStorage.getItem('yonToken')))
           .catch(error => {
             this.errors = error.response.data.errors
+          })
+          .then(res => {
+            if (this.errors.length === 0) {
+              this.$router.push('/')
+            }
           })
       },
       clearErrors () {
