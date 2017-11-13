@@ -31,7 +31,7 @@
         sortDesc: true,
         sortColumn: 'yachtski',
         filterText: '',
-        sortedSongs: this.songs
+        sortedSongs: orderBy(this.songs, ['yachtski'], ['desc'])
       }
     },
     props: {

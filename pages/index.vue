@@ -6,7 +6,6 @@
 
 <script>
 import axios from 'axios'
-import { sortBy } from 'lodash'
 
 import SongList from '../components/SongList'
 
@@ -14,7 +13,7 @@ export default {
   asyncData () {
     return axios.get(`http://localhost:3000/api/v1/songs`)
       .then((res) => {
-        return { songs: sortBy(res.data, 'yachtski').reverse() }
+        return { songs: res.data }
       })
   },
   components: {
