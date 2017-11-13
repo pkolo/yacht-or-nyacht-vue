@@ -1,14 +1,9 @@
 <template>
-  <div class="song-info-section">
-    <div class="song-info-header">
-      {{ title }}
-    </div>
-    <div class="player-list">
-      <div class="player" v-for="player in players">
-        <bullet :score="player.yachtski" />
-        <div class="player-name" v-html="$options.filters.artistURL(player)"></div>
-        <div class="player-roles">{{ player.roles }}</div>
-      </div>
+  <div class="player-list">
+    <div class="player" v-for="player in players">
+      <bullet :score="player.yachtski" />
+      <div class="player-name" v-html="$options.filters.artistURL(player)"></div>
+      <div class="player-roles">{{ player.roles }}</div>
     </div>
   </div>
 </template>
@@ -18,8 +13,7 @@
 
   export default {
     props: {
-      players: Array,
-      title: String
+      players: Array
     },
     components: {
       Bullet

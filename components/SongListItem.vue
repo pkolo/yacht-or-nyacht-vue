@@ -10,7 +10,7 @@
     <div :style="{ backgroundColor: this.getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.steve) }">{{ song.scores.steve }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.dave) }">{{ song.scores.dave }}</div>
-    <div>{{ song.episode.number }}</div>
+    <div><a :href="song.episode.url">{{ song.episode.number }}</a></div>
   </div>
 </template>
 

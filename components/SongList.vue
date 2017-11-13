@@ -21,15 +21,17 @@
 </template>
 
 <script>
-  import { sortBy } from 'lodash'
+  import { orderBy } from 'lodash'
   import SongListFilter from './SongListFilter'
   import SongListItem from './SongListItem'
 
   export default {
     data () {
       return {
-        sortOrder: 'desc',
-        filterText: ''
+        sortDesc: true,
+        sortColumn: 'yachtski',
+        filterText: '',
+        sortedSongs: orderBy(this.songs, ['yachtski'], ['desc'])
       }
     },
     props: {
@@ -38,19 +40,26 @@
     },
     methods: {
       songSort (column) {
-        if (this.sortOrder === 'desc') {
-          this.songs = sortBy(this.songs, [column]).reverse()
-          this.sortOrder = 'asc'
+        if (column === this.sortColumn) {
+          this.sortDesc = !this.sortDesc
+          this.sortedSongs = orderBy(this.sortedSongs, [this.sortColumn], [this.sortValue()])
         } else {
-          this.songs = sortBy(this.songs, [column])
-          this.sortOrder = 'desc'
+          this.sortColumn = column
+          this.sortedSongs = orderBy(this.sortedSongs, [this.sortColumn], [this.sortValue()])
+        }
+      },
+      sortValue () {
+        if (this.sortDesc) {
+          return 'desc'
+        } else {
+          return 'asc'
         }
       }
     },
     computed: {
       filteredSongs () {
         let filter = new RegExp(this.filterText, 'i')
-        return this.songs.filter(song => (song.title.match(filter) || song.artists[0].name.match(filter)))
+        return this.sortedSongs.filter(song => (song.title.match(filter) || song.artists[0].name.match(filter)))
       }
     },
     components: {

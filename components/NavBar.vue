@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div class="site-name">Yacht Or Nyacht?</div>
+    <div class="site-name"><a href="/">Yacht Or Nyacht?</a></div>
     <a href="#">Yacht Rock</a>
     <a href="#">Webseries</a>
     <a href="#">Beyond Yacht Rock Podcast</a>

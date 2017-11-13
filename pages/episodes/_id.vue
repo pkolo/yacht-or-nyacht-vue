@@ -1,0 +1,49 @@
+<template>
+  <div class="container">
+    <div class="content-header-container">
+      <div class="content-header">
+        <div class="title">
+          {{ episode.title }}
+        </div>
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="content-section">
+        <div class="content-section-header">Episode Tracklist</div>
+        <song-list v-bind:showFilter="false" :songs="episode.songs" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import axios from 'axios'
+
+  import { jayGradient } from '../../mixins/gradient'
+
+  import SongList from '../../components/SongList'
+
+  export default {
+    asyncData ({ params }) {
+      let id = params.id
+      return axios.get(`http://localhost:3000/api/v1/episodes/${id}`)
+        .then((res) => {
+          return { episode: res.data }
+        })
+    },
+    components: {
+      SongList
+    },
+    mixins: [jayGradient]
+  }
+</script>
+
+<style>
+  .container {
+    border: 1px solid #ababab;
+  }
+
+  .content-header {
+    background: #ababab;
+  }
+</style>

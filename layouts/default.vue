@@ -45,6 +45,13 @@
     text-align: center;
   }
 
+  .content-header-container a,
+  .content-header-container a:visited,
+  .content-header-container a:active {
+    text-decoration: none;
+    color: #fff;
+  }
+
   .content-header {
     padding: 20px 10px;
     margin-bottom: 40px;
