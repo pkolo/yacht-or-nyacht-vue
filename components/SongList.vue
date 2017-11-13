@@ -21,14 +21,15 @@
 </template>
 
 <script>
-  import { sortBy } from 'lodash'
+  import { orderBy } from 'lodash'
   import SongListFilter from './SongListFilter'
   import SongListItem from './SongListItem'
 
   export default {
     data () {
       return {
-        sortOrder: 'desc',
+        sortDesc: true,
+        sortColumn: 'yachtski',
         filterText: ''
       }
     },
@@ -38,12 +39,19 @@
     },
     methods: {
       songSort (column) {
-        if (this.sortOrder === 'desc') {
-          this.songs = sortBy(this.songs, [column]).reverse()
-          this.sortOrder = 'asc'
+        if (column === this.sortColumn) {
+          this.sortDesc = !this.sortDesc
+          this.songs = orderBy(this.songs, [this.sortColumn], [this.sortValue()])
         } else {
-          this.songs = sortBy(this.songs, [column])
-          this.sortOrder = 'desc'
+          this.sortColumn = column
+          this.songs = orderBy(this.songs, [this.sortColumn], [this.sortValue()])
+        }
+      },
+      sortValue () {
+        if (this.sortDesc) {
+          return 'desc'
+        } else {
+          return 'asc'
         }
       }
     },
