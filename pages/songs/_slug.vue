@@ -5,7 +5,7 @@
         <div class="title">{{ song.title }}</div>
         <div class="subtitle">
           <span v-html="this.$options.filters.artistURL(song.artists, song.featured_artists)"></span>
-          <span><i>{{ song.album.title }}</i></span>
+          <span><i><a :href="song.album.url">{{ song.album.title }}</a></i></span>
           <span>{{ song.year }}</span>
         </div>
       </div>
