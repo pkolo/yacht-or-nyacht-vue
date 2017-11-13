@@ -22,7 +22,7 @@ export default {
     }
   },
   asyncData () {
-    return axios.get(`http://localhost:3000/api/v1/songs`)
+    return axios.get(`${process.env.baseUrl}/songs`)
       .then((res) => {
         return { songs: res.data }
       })

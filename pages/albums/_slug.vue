@@ -36,7 +36,7 @@
   export default {
     asyncData ({ params }) {
       let id = params.slug.match(/\d+/)
-      return axios.get(`http://localhost:3000/api/v1/albums/${id}`)
+      return axios.get(`${process.env.baseUrl}/albums/${id}`)
         .then((res) => {
           return { album: res.data }
         })

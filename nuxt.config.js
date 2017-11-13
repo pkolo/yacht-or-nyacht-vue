@@ -38,6 +38,10 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    vendor: ['axios']
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000/api/v1'
   }
 }

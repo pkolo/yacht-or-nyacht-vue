@@ -28,7 +28,7 @@
     },
     methods: {
       login () {
-        axios.post('http://localhost:3000/api/v1/login', this.formData)
+        axios.post(`${process.env.baseUrl}/login`, this.formData)
           .then(res => window.localStorage.setItem('yonToken', res.data.token))
           .then(console.log(localStorage.getItem('yonToken')))
           .catch(error => {

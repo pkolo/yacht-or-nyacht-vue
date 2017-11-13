@@ -26,7 +26,7 @@
   export default {
     asyncData ({ params }) {
       let id = params.id
-      return axios.get(`http://localhost:3000/api/v1/episodes/${id}`)
+      return axios.get(`${process.env.baseUrl}/episodes/${id}`)
         .then((res) => {
           return { episode: res.data }
         })
