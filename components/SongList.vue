@@ -1,18 +1,18 @@
 <template>
   <div class="song-list">
-    <song-list-filter v-model="filterText"/>
+    <song-list-filter v-show="showFilter" v-model="filterText"/>
     <div class="song-list-header">
-      <a href="#" @click="songSort('yachtski')">Yachtski</a>
+      <span @click="songSort('yachtski')">Yachtski</span>
       <div>
-        <a href="#" @click="songSort('artists[0].name')">Artist</a> /
-        <a href="#" @click="songSort('title')">Title</a> /
-        <a href="#" @click="songSort('year')">Year</a>
+        <span @click="songSort('artists[0].name')">Artist</span> -
+        <span @click="songSort('title')">Title</span>
       </div>
-      <a href="#" @click="songSort('scores.jd')">JD</a>
-      <a href="#" @click="songSort('scores.hunter')">Hunter</a>
-      <a href="#" @click="songSort('scores.steve')">Steve</a>
-      <a href="#" @click="songSort('scores.dave')">Dave</a>
-      <a href="#" @click="songSort('episode.number')">Ep #</a>
+      <span @click="songSort('year')">Year</span>
+      <span @click="songSort('scores.jd')">JD</span>
+      <span @click="songSort('scores.hunter')">Hunter</span>
+      <span @click="songSort('scores.steve')">Steve</span>
+      <span @click="songSort('scores.dave')">Dave</span>
+      <span @click="songSort('episode.number')">Ep #</span>
     </div>
     <div class="song" v-for="song in filteredSongs">
       <song-list-item :song="song" />
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import { sortBy } from 'lodash'
   import SongListFilter from './SongListFilter'
   import SongListItem from './SongListItem'
@@ -29,10 +28,13 @@
   export default {
     data () {
       return {
-        songs: [],
         sortOrder: 'desc',
         filterText: ''
       }
+    },
+    props: {
+      showFilter: Boolean,
+      songs: Array
     },
     methods: {
       songSort (column) {
@@ -43,9 +45,6 @@
           this.songs = sortBy(this.songs, [column])
           this.sortOrder = 'desc'
         }
-      },
-      updateFilter () {
-        this.filterText = 'sdfsdfsdfsd'
       }
     },
     computed: {
@@ -53,10 +52,6 @@
         let filter = new RegExp(this.filterText, 'i')
         return this.songs.filter(song => (song.title.match(filter) || song.artists[0].name.match(filter)))
       }
-    },
-    created () {
-      axios.get('http://localhost:3000/api/v1/songs')
-        .then(response => { this.songs = sortBy(response.data, 'yachtski').reverse() })
     },
     components: {
       SongListFilter,
@@ -68,7 +63,14 @@
 <style>
   .song-list-header {
     display: grid;
-    grid-template-columns: 1fr 6fr repeat(5, 1fr);
+    grid-template-columns: 1fr 6fr repeat(6, 1fr);
     margin-bottom: 5px;
+    background: #ababab;
+    color: #fff;
+  }
+
+  .song-list-header > * {
+    padding: 10px;
+    cursor: pointer;
   }
 </style>

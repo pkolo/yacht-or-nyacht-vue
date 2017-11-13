@@ -5,7 +5,7 @@
         <div class="song-main-info" :style="{ background: getColor(song.yachtski) }">
           <div class="song-title">{{ song.title }}</div>
           <div class="song-subtitle">
-            <span v-html="this.$options.filters.artistURL(song.artists)"></span>
+            <span v-html="this.$options.filters.artistURL(song.artists, song.featured_artists)"></span>
             <span><i>{{ song.album.title }}</i></span>
             <span>{{ song.year }}</span>
           </div>
@@ -57,8 +57,13 @@
           return 'Nyacht Rock'
         }
       },
-      artistURL: function (artists) {
-        return artists.map(a => `<a class="white" href=${a.url}>${a.name}</a>`).join(', ')
+      artistURL: function (artists, featuredArtists) {
+        let artistList = artists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
+        if (featuredArtists.length > 0) {
+          let featuredArtistList = featuredArtists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
+          return `${artistList} w/ ${featuredArtistList}`
+        }
+        return artistList
       }
     },
     mixins: [jayGradient]
@@ -66,12 +71,6 @@
 </script>
 
 <style>
-
-  .container {
-      width: 75%;
-      margin: 0 auto;
-  }
-
   .song-header {
     color: #fff;
     text-align: center;

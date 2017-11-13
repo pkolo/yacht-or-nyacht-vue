@@ -6,7 +6,7 @@
     <div class="player-list">
       <div class="player" v-for="player in players">
         <bullet :score="player.yachtski" />
-        <div class="player-name">{{ player.name }}</div>
+        <div class="player-name" v-html="$options.filters.artistURL(player)"></div>
         <div class="player-roles">{{ player.roles }}</div>
       </div>
     </div>
@@ -23,6 +23,11 @@
     },
     components: {
       Bullet
+    },
+    filters: {
+      artistURL: function (artist) {
+        return `<a href=${artist.url}>${artist.name}</a>`
+      }
     }
   }
 </script>
