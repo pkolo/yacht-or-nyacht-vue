@@ -7,6 +7,7 @@
         </div>
       </div>
     </div>
+    <nuxt-child/>
     <div class="content-container">
       <div class="content-section">
         <div class="content-section-header">Episode Tracklist</div>
