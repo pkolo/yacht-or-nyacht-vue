@@ -120,10 +120,14 @@
 </script>
 
 <style>
-  .add-song-form {
-    border: 1px solid #444;
+  .edit-episode-container {
     width: 75%;
     margin: 20px auto;
+  }
+
+  .add-song-form {
+    padding: 20px;
+    border: 1px solid #444;
   }
 
   form {
