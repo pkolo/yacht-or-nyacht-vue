@@ -1,14 +1,47 @@
 <template>
   <nav>
     <div class="site-name"><a href="/">Yacht Or Nyacht?</a></div>
-    <a href="#">Yacht Rock</a>
-    <a href="#">Webseries</a>
-    <a href="#">Beyond Yacht Rock Podcast</a>
-    <a href="#">YON Stats</a>
+    <nav-menu :name="`Yacht Rock Links`" :links="yrLinks" />
+    <nav-menu :name="`Yacht Or Nyacht Links`" :links="yonLinks" />
   </nav>
 </template>
 
 <script>
+  import NavMenu from './NavMenu'
+
+  export default {
+    data () {
+      return {
+        yrLinks: [
+          {
+            title: 'Yacht Rock Official',
+            url: 'http://www.yachtrock.com/'
+          },
+          {
+            title: 'Yacht Rock Webseries',
+            url: 'http://www.yachtrock.com/yacht-rock-episodes'
+          },
+          {
+            title: 'Certified Yacht Rock Spotify Playlist',
+            url: 'http://www.yachtrock.com/yacht-rock-episodes'
+          }
+        ],
+        yonLinks: [
+          {
+            title: 'Host Stats',
+            url: '#'
+          },
+          {
+            title: 'Fun Facts',
+            url: '#'
+          }
+        ]
+      }
+    },
+    components: {
+      NavMenu
+    }
+  }
 </script>
 
 <style>
@@ -24,10 +57,5 @@
 
   nav > * {
 
-  }
-
-  .site-name {
-    font-family: "Shrikhand", sans-serif;
-    font-size: 24px;
   }
 </style>

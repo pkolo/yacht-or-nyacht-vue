@@ -56,6 +56,11 @@
         }
       }
     },
+    watch: {
+      songs: function (newSongs) {
+        this.sortedSongs = newSongs
+      }
+    },
     computed: {
       filteredSongs () {
         let filter = new RegExp(this.filterText, 'i')

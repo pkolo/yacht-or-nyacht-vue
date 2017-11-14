@@ -7,8 +7,8 @@
       <div class="credit" v-for="credit in credits">
         <bullet :score="credit.media.yachtski" />
         <div class="credit-title">
-          <span v-html="$options.filters.artistURL(credit.media.artists, credit.media.featured_artists)"></span> -
-          <a :href="credit.media.url">{{ credit.media.title }}</a>
+          <artist-links :artists="credit.media.artists" :featuredArtists="credit.media.featured_artists" />
+          <nuxt-link :to="{ path: `/${type}/${credit.media.id}/${urlString(credit.media.title)}` }" class="media-title">{{ credit.media.title }}</nuxt-link>
         </div>
         <div class="credit-roles">{{ credit.roles }}</div>
       </div>
@@ -17,26 +17,22 @@
 </template>
 
 <script>
+  import { utilities } from '../mixins/utilities'
+
   import Bullet from './Bullet'
+  import ArtistLinks from './ArtistLinks'
 
   export default {
     props: {
       credits: Array,
-      title: String
+      title: String,
+      type: String
     },
     components: {
-      Bullet
+      Bullet,
+      ArtistLinks
     },
-    filters: {
-      artistURL: function (artists, featuredArtists) {
-        let artistList = artists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
-        if (featuredArtists.length > 0) {
-          let featuredArtistList = featuredArtists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
-          return `${artistList} w/ ${featuredArtistList}`
-        }
-        return artistList
-      }
-    }
+    mixins: [utilities]
   }
 </script>
 
@@ -52,4 +48,14 @@
   .credit-roles {
     text-align: right;
   }
+
+  .media-title {
+    display: inline-block;
+  }
+
+  .media-title:before {
+    content: " - ";
+    white-space: pre;
+  }
+
 </style>

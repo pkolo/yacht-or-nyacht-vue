@@ -12,12 +12,12 @@
       </div>
     </div>
     <div class="content-container">
-      <div class="content-section">
+      <div class="content-section" v-if="personnel.songs_as_artist.length > 0">
         <div class="content-section-header">Artist Tracklist</div>
         <song-list v-bind:showFilter="false" :songs="personnel.songs_as_artist" />
       </div>
-      <credit-list :credits="personnel.song_credits" :title="`Song Contributions`" />
-      <credit-list :credits="personnel.album_credits" :title="`Album Contributions`" />
+      <credit-list :credits="personnel.song_credits" :title="`Song Contributions`" :type="`songs`" v-if="personnel.song_credits.length > 0"/>
+      <credit-list :credits="personnel.album_credits" :title="`Album Contributions`" :type="`albums`" v-if="personnel.album_credits.length > 0"/>
     </div>
   </div>
 </template>
@@ -25,15 +25,15 @@
 <script>
   import axios from 'axios'
 
-  import { jayGradient } from '../../mixins/gradient'
+  import { utilities } from '../../mixins/utilities'
 
   import SongList from '../../components/SongList'
   import CreditList from '../../components/CreditList'
 
   export default {
     asyncData ({ params }) {
-      let id = params.slug.match(/\d+/)
-      return axios.get(`http://localhost:3000/api/v1/personnel/${id}`)
+      let id = params.id.match(/\d+/)
+      return axios.get(`${process.env.baseUrl}/personnel/${id}`)
         .then((res) => {
           return { personnel: res.data }
         })
@@ -47,7 +47,7 @@
         return +number.toFixed(2)
       }
     },
-    mixins: [jayGradient]
+    mixins: [utilities]
   }
 </script>
 

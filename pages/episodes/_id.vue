@@ -7,6 +7,7 @@
         </div>
       </div>
     </div>
+    <nuxt-child v-on:submitSong="pushSong" />
     <div class="content-container">
       <div class="content-section">
         <div class="content-section-header">Episode Tracklist</div>
@@ -19,22 +20,27 @@
 <script>
   import axios from 'axios'
 
-  import { jayGradient } from '../../mixins/gradient'
+  import { utilities } from '../../mixins/utilities'
 
   import SongList from '../../components/SongList'
 
   export default {
     asyncData ({ params }) {
       let id = params.id
-      return axios.get(`http://localhost:3000/api/v1/episodes/${id}`)
+      return axios.get(`${process.env.baseUrl}/episodes/${id}`)
         .then((res) => {
           return { episode: res.data }
         })
     },
+    methods: {
+      pushSong (newSong) {
+        this.episode.songs.push(newSong)
+      }
+    },
     components: {
       SongList
     },
-    mixins: [jayGradient]
+    mixins: [utilities]
   }
 </script>
 

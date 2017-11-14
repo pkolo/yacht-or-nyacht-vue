@@ -38,6 +38,36 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    },
+    vendor: ['axios']
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000/api/v1'
+  },
+  router: {
+    extendRoutes (routes, resolve) {
+      routes.push(...[
+        {
+          name: 'episodes-wild',
+          path: '/episodes/:id?/*',
+          component: './pages/episodes/_id.vue'
+        },
+        {
+          name: 'songs-wild',
+          path: '/songs/:id?/*',
+          component: './pages/songs/_id.vue'
+        },
+        {
+          name: 'albums-wild',
+          path: '/albums/:id?/*',
+          component: './pages/albums/_id.vue'
+        },
+        {
+          name: 'personnel-wild',
+          path: '/personnel/:id?/*',
+          component: './pages/personnel/_id.vue'
+        },
+      ])
     }
   }
 }

@@ -2,13 +2,15 @@
   <div class="player-list">
     <div class="player" v-for="player in players">
       <bullet :score="player.yachtski" />
-      <div class="player-name" v-html="$options.filters.artistURL(player)"></div>
+      <nuxt-link class="player-name" :to="{ path: `/personnel/${player.id}/${urlString(player.name)}` }">{{ player.name }}</nuxt-link>
       <div class="player-roles">{{ player.roles }}</div>
     </div>
   </div>
 </template>
 
 <script>
+  import { utilities } from '../mixins/utilities'
+
   import Bullet from './Bullet'
 
   export default {
@@ -18,11 +20,7 @@
     components: {
       Bullet
     },
-    filters: {
-      artistURL: function (artist) {
-        return `<a href=${artist.url}>${artist.name}</a>`
-      }
-    }
+    mixins: [utilities]
   }
 </script>
 

@@ -4,8 +4,8 @@
       <div class="content-header" :style="{ background: getColor(song.yachtski) }">
         <div class="title">{{ song.title }}</div>
         <div class="subtitle">
-          <span v-html="this.$options.filters.artistURL(song.artists, song.featured_artists)"></span>
-          <span><i><a :href="song.album.url">{{ song.album.title }}</a></i></span>
+          <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" />
+          <span><nuxt-link class="album-title" :to="{ path: `/albums/${song.album.id}/${urlString(song.album.title)}`}">{{ song.album.title }}</nuxt-link></span>
           <span>{{ song.year }}</span>
         </div>
       </div>
@@ -19,11 +19,11 @@
           <iframe height="200" :src="`https://www.youtube.com/embed/${song.yt_id}?rel=0`" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
-      <div class="content-section">
+      <div class="content-section" v-if="song.players.length > 0">
         <div class="content-section-header">Song Personnel</div>
         <player-list :players="song.players" />
       </div>
-      <div class="content-section">
+      <div class="content-section" v-if="song.album.players.length > 0">
         <div class="content-section-header">Album Personnel</div>
         <player-list :players="song.album.players" />
       </div>
@@ -34,20 +34,22 @@
 <script>
   import axios from 'axios'
 
-  import { jayGradient } from '../../mixins/gradient'
+  import { utilities } from '../../mixins/utilities'
 
+  import ArtistLinks from '../../components/ArtistLinks'
   import YachtskiContainer from '../../components/YachtskiContainer'
   import PlayerList from '../../components/PlayerList'
 
   export default {
     asyncData ({ params }) {
-      let id = params.slug.match(/\d+/)
-      return axios.get(`http://localhost:3000/api/v1/songs/${id}`)
+      let id = params.id.match(/\d+/)
+      return axios.get(`${process.env.baseUrl}/songs/${id}`)
         .then((res) => {
           return { song: res.data }
         })
     },
     components: {
+      ArtistLinks,
       YachtskiContainer,
       PlayerList
     },
@@ -60,17 +62,9 @@
         } else {
           return 'Nyacht Rock'
         }
-      },
-      artistURL: function (artists, featuredArtists) {
-        let artistList = artists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
-        if (featuredArtists.length > 0) {
-          let featuredArtistList = featuredArtists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
-          return `${artistList} w/ ${featuredArtistList}`
-        }
-        return artistList
       }
     },
-    mixins: [jayGradient]
+    mixins: [utilities]
   }
 </script>
 

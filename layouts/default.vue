@@ -39,6 +39,11 @@
     color: #444;
   }
 
+  .site-name {
+    font-family: "Shrikhand", sans-serif;
+    font-size: 24px;
+  }
+
   .content-header-container {
     padding: 10px;
     color: #fff;
@@ -83,6 +88,10 @@
     padding-bottom: 5px;
     font-size: 18px;
     border-bottom: 1px solid #dedede;
+  }
+
+  .album-title {
+    font-style: italic;
   }
 
 </style>

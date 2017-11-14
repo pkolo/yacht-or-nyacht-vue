@@ -7,12 +7,12 @@
 </template>
 
 <script>
-  import { jayGradient } from '../mixins/gradient'
+  import { utilities } from '../mixins/utilities'
 
   export default {
     props: {
       score: Number
     },
-    mixins: [jayGradient]
+    mixins: [utilities]
   }
 </script>
