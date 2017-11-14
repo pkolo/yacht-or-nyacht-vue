@@ -41,8 +41,7 @@
 
   export default {
     asyncData ({ params }) {
-      let id = params.slug.match(/\d+/)
-      return axios.get(`${process.env.baseUrl}/songs/${id}`)
+      return axios.get(`${process.env.baseUrl}/songs/${params.id}`)
         .then((res) => {
           return { song: res.data }
         })

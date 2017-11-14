@@ -43,5 +43,21 @@ module.exports = {
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000/api/v1'
+  },
+  router: {
+    extendRoutes (routes, resolve) {
+      routes.push(...[
+        {
+          name: 'episodes-wild',
+          path: '/episodes/:id?/*',
+          component: './pages/episodes/_id.vue'
+        },
+        {
+          name: 'songs-wild',
+          path: '/songs/:id?/*',
+          component: './pages/songs/_id.vue'
+        },
+      ])
+    }
   }
 }
