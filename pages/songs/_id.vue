@@ -19,11 +19,11 @@
           <iframe height="200" :src="`https://www.youtube.com/embed/${song.yt_id}?rel=0`" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
-      <div class="content-section">
+      <div class="content-section" v-if="song.players.length > 0">
         <div class="content-section-header">Song Personnel</div>
         <player-list :players="song.players" />
       </div>
-      <div class="content-section">
+      <div class="content-section" v-if="song.album.players.length > 0">
         <div class="content-section-header">Album Personnel</div>
         <player-list :players="song.album.players" />
       </div>

@@ -12,12 +12,12 @@
       </div>
     </div>
     <div class="content-container">
-      <div class="content-section">
+      <div class="content-section" v-if="personnel.songs_as_artist.length > 0">
         <div class="content-section-header">Artist Tracklist</div>
         <song-list v-bind:showFilter="false" :songs="personnel.songs_as_artist" />
       </div>
-      <credit-list :credits="personnel.song_credits" :title="`Song Contributions`" :type="`songs`" />
-      <credit-list :credits="personnel.album_credits" :title="`Album Contributions`" :type="`albums`" />
+      <credit-list :credits="personnel.song_credits" :title="`Song Contributions`" :type="`songs`" v-if="personnel.song_credits.length > 0"/>
+      <credit-list :credits="personnel.album_credits" :title="`Album Contributions`" :type="`albums`" v-if="personnel.album_credits.length > 0"/>
     </div>
   </div>
 </template>
