@@ -1,19 +1,7 @@
 <template>
   <div class="song-list-item" :style="{ backgroundColor: this.getColor(song.yachtski) }">
     <div>{{ song.yachtski | roundNum }}</div>
-    <div>
-      <div class="artist-links">
-        <span v-for="artist in song.artists">
-          <nuxt-link :to="{ path: `personnel/${artist.id}`}">{{ artist.name }}</nuxt-link>
-        </span>
-      </div>
-      <div class="artist-links featured" v-if="song.featured_artists.length > 0">
-        <span v-for="artist in song.featured_artists">
-          <nuxt-link :to="{ path: `personnel/${artist.id}`}">{{ artist.name }}</nuxt-link>
-        </span>
-      </div>
-      <nuxt-link class="song-title" :to="{ path: `songs/${song.id}`}">{{ song.title }}</nuxt-link>
-    </div>
+    <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" :songId="song.id" :songTitle="song.title" />
     <div>{{ song.year }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
@@ -26,9 +14,14 @@
 <script>
   import { jayGradient } from '../mixins/gradient'
 
+  import ArtistLinks from './ArtistLinks'
+
   export default {
     props: {
       song: Object
+    },
+    components: {
+      ArtistLinks
     },
     filters: {
       roundNum: function (number) {
@@ -50,18 +43,8 @@
     padding: 10px;
   }
 
-  .artist-links {
+  .song-title {
     display: inline-block;
-  }
-
-  .artist-links > * + *:before {
-    content: ", ";
-    white-space: pre;
-  }
-
-  .featured:before {
-    content: " w/ ";
-    white-space: pre;
   }
 
   .song-title:before {
