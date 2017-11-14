@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="artist-link-section">
     <div class="artist-links">
       <span v-for="artist in artists">
         <nuxt-link :to="{ path: `personnel/${artist.id}`}">{{ artist.name }}</nuxt-link>
@@ -10,7 +10,6 @@
         <nuxt-link :to="{ path: `personnel/${artist.id}`}">{{ artist.name }}</nuxt-link>
       </span>
     </div>
-    <nuxt-link :to="{ path: `songs/${songId}` }" class="song-title">{{ songTitle }}</nuxt-link>
   </div>
 </template>
 
@@ -26,6 +25,10 @@
 </script>
 
 <style>
+  .artist-link-section {
+    display: inline-block;
+  }
+
   .artist-links {
     display: inline-block;
   }
@@ -37,11 +40,6 @@
 
   .featured:before {
     content: " w/ ";
-    white-space: pre;
-  }
-
-  .song-title:before {
-    content: " - ";
     white-space: pre;
   }
 </style>

@@ -1,7 +1,10 @@
 <template>
   <div class="song-list-item" :style="{ backgroundColor: this.getColor(song.yachtski) }">
     <div>{{ song.yachtski | roundNum }}</div>
-    <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" :songId="song.id" :songTitle="song.title" />
+    <div class="artist-song-title">
+      <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" :songId="song.id" :songTitle="song.title" />
+      <nuxt-link :to="{ path: `songs/${song.id}` }" class="song-title">{{ song.title }}</nuxt-link>
+    </div>
     <div>{{ song.year }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
@@ -50,5 +53,9 @@
   .song-title:before {
     content: " - ";
     white-space: pre;
+  }
+
+  .artist-song-title {
+    display: inline-block;
   }
 </style>
