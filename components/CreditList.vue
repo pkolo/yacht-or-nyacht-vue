@@ -8,7 +8,7 @@
         <bullet :score="credit.media.yachtski" />
         <div class="credit-title">
           <artist-links :artists="credit.media.artists" :featuredArtists="credit.media.featured_artists" />
-          <nuxt-link :to="{ path: `/${type}/${credit.media.id}` }" class="media-title">{{ credit.media.title }}</nuxt-link>
+          <nuxt-link :to="{ path: `/${type}/${credit.media.id}/${urlString(credit.media.title)}` }" class="media-title">{{ credit.media.title }}</nuxt-link>
         </div>
         <div class="credit-roles">{{ credit.roles }}</div>
       </div>
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+  import { utilities } from '../mixins/utilities'
+
   import Bullet from './Bullet'
   import ArtistLinks from './ArtistLinks'
 
@@ -29,7 +31,8 @@
     components: {
       Bullet,
       ArtistLinks
-    }
+    },
+    mixins: [utilities]
   }
 </script>
 

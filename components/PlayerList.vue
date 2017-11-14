@@ -2,13 +2,15 @@
   <div class="player-list">
     <div class="player" v-for="player in players">
       <bullet :score="player.yachtski" />
-      <nuxt-link class="player-name" :to="{ path: `/personnel/${player.id}` }">{{ player.name }}</nuxt-link>
+      <nuxt-link class="player-name" :to="{ path: `/personnel/${player.id}/${urlString(player.name)}` }">{{ player.name }}</nuxt-link>
       <div class="player-roles">{{ player.roles }}</div>
     </div>
   </div>
 </template>
 
 <script>
+  import { utilities } from '../mixins/utilities'
+
   import Bullet from './Bullet'
 
   export default {
@@ -17,7 +19,8 @@
     },
     components: {
       Bullet
-    }
+    },
+    mixins: [utilities]
   }
 </script>
 

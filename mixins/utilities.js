@@ -30,7 +30,7 @@ export const utilities = {
     },
     urlString (resourceName) {
       let removeParens = resourceName.replace(/\([^)]*\)/, '').trim()
-      let words = removeParens.replace(/[^0-9a-z ]/i, '')
+      let words = removeParens.replace(/[^0-9a-z\- ]/i, '')
       return words.split(' ').join('-')
     }
   }
