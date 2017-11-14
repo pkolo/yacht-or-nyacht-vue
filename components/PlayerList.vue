@@ -2,7 +2,7 @@
   <div class="player-list">
     <div class="player" v-for="player in players">
       <bullet :score="player.yachtski" />
-      <div class="player-name" v-html="$options.filters.artistURL(player)"></div>
+      <nuxt-link class="player-name" :to="{ path: `/personnel/${player.id}` }">{{ player.name }}</nuxt-link>
       <div class="player-roles">{{ player.roles }}</div>
     </div>
   </div>
@@ -17,11 +17,6 @@
     },
     components: {
       Bullet
-    },
-    filters: {
-      artistURL: function (artist) {
-        return `<a href=${artist.url}>${artist.name}</a>`
-      }
     }
   }
 </script>

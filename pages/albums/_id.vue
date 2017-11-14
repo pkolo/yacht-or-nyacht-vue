@@ -2,7 +2,7 @@
   <div class="container" :style="{ border: `1px solid ${getColor(album.yachtski)}` }">
     <div class="content-header-container">
       <div class="content-header" :style="{ background: getColor(album.yachtski) }">
-        <div class="title">
+        <div class="title album-title">
           {{ album.title }}
         </div>
         <div class="subtitle">

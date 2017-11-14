@@ -5,7 +5,7 @@
         <div class="title">{{ song.title }}</div>
         <div class="subtitle">
           <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" />
-          <span><i><a :href="song.album.url">{{ song.album.title }}</a></i></span>
+          <span><nuxt-link class="album-title" :to="{ path: `/albums/${song.album.id}`}">{{ song.album.title }}</nuxt-link></span>
           <span>{{ song.year }}</span>
         </div>
       </div>

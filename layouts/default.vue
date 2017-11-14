@@ -90,4 +90,8 @@
     border-bottom: 1px solid #dedede;
   }
 
+  .album-title {
+    font-style: italic;
+  }
+
 </style>
