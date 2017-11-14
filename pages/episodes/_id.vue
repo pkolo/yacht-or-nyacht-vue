@@ -20,7 +20,7 @@
 <script>
   import axios from 'axios'
 
-  import { jayGradient } from '../../mixins/gradient'
+  import { utilities } from '../../mixins/utilities'
 
   import SongList from '../../components/SongList'
 
@@ -40,7 +40,7 @@
     components: {
       SongList
     },
-    mixins: [jayGradient]
+    mixins: [utilities]
   }
 </script>
 

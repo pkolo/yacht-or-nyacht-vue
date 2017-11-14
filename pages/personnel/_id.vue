@@ -25,7 +25,7 @@
 <script>
   import axios from 'axios'
 
-  import { jayGradient } from '../../mixins/gradient'
+  import { utilities } from '../../mixins/utilities'
 
   import SongList from '../../components/SongList'
   import CreditList from '../../components/CreditList'
@@ -47,7 +47,7 @@
         return +number.toFixed(2)
       }
     },
-    mixins: [jayGradient]
+    mixins: [utilities]
   }
 </script>
 

@@ -34,7 +34,7 @@
 <script>
   import axios from 'axios'
 
-  import { jayGradient } from '../../mixins/gradient'
+  import { utilities } from '../../mixins/utilities'
 
   import ArtistLinks from '../../components/ArtistLinks'
   import YachtskiContainer from '../../components/YachtskiContainer'
@@ -63,7 +63,7 @@
         }
       }
     },
-    mixins: [jayGradient]
+    mixins: [utilities]
   }
 </script>
 

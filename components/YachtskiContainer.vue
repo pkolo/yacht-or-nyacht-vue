@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import { jayGradient } from '../mixins/gradient'
+  import { utilities } from '../mixins/utilities'
 
   import Bullet from './Bullet'
 
@@ -61,7 +61,7 @@
     components: {
       Bullet
     },
-    mixins: [jayGradient]
+    mixins: [utilities]
   }
 </script>
 

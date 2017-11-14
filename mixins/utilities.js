@@ -1,4 +1,4 @@
-export const jayGradient = {
+export const utilities = {
   methods: {
     getColor (yachtski) {
       var pct = yachtski / 100
@@ -27,6 +27,11 @@ export const jayGradient = {
       }
       var colorRGB = 'rgb(' + [color.r, color.g, color.b].join(',') + ')'
       return (pct >= 0) ? colorRGB : 'rgb(150,150,150)'
+    },
+    urlString (resourceName) {
+      let removeParens = resourceName.replace(/\([^)]*\)/, '').trim()
+      let words = removeParens.replace(/[^0-9a-z ]/i, '')
+      return words.split(' ').join('-')
     }
   }
 }

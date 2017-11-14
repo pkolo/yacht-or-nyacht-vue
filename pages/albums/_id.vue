@@ -28,7 +28,7 @@
 <script>
   import axios from 'axios'
 
-  import { jayGradient } from '../../mixins/gradient'
+  import { utilities } from '../../mixins/utilities'
 
   import ArtistLinks from '../../components/ArtistLinks'
   import SongList from '../../components/SongList'
@@ -47,7 +47,7 @@
       SongList,
       PlayerList
     },
-    mixins: [jayGradient],
+    mixins: [utilities],
     filters: {
       roundNum: function (number) {
         return +number.toFixed(2)

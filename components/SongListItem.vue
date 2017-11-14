@@ -1,21 +1,21 @@
 <template>
-  <div class="song-list-item" :style="{ backgroundColor: this.getColor(song.yachtski) }">
+  <div class="song-list-item" :style="{ backgroundColor: getColor(song.yachtski) }">
     <div>{{ song.yachtski | roundNum }}</div>
     <div class="artist-song-title">
       <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" :songId="song.id" :songTitle="song.title" />
-      <nuxt-link :to="{ path: `/songs/${song.id}` }" class="song-title">{{ song.title }}</nuxt-link>
+      <nuxt-link :to="{ path: `/songs/${song.id}/${urlString(song.title)}` }" class="song-title">{{ song.title }}</nuxt-link>
     </div>
     <div>{{ song.year }}</div>
-    <div :style="{ backgroundColor: this.getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
-    <div :style="{ backgroundColor: this.getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
-    <div :style="{ backgroundColor: this.getColor(song.scores.steve) }">{{ song.scores.steve }}</div>
-    <div :style="{ backgroundColor: this.getColor(song.scores.dave) }">{{ song.scores.dave }}</div>
+    <div :style="{ backgroundColor: getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
+    <div :style="{ backgroundColor: getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
+    <div :style="{ backgroundColor: getColor(song.scores.steve) }">{{ song.scores.steve }}</div>
+    <div :style="{ backgroundColor: getColor(song.scores.dave) }">{{ song.scores.dave }}</div>
     <div><a :href="song.episode.url">{{ song.episode.number }}</a></div>
   </div>
 </template>
 
 <script>
-  import { jayGradient } from '../mixins/gradient'
+  import { utilities } from '../mixins/utilities'
 
   import ArtistLinks from './ArtistLinks'
 
@@ -31,7 +31,7 @@
         return number.toFixed(2)
       }
     },
-    mixins: [jayGradient]
+    mixins: [utilities]
   }
 </script>
 
