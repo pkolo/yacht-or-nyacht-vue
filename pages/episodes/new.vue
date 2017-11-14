@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="form-container">
     <form @submit.prevent="postEpisode">
       <input type="text" v-model="formData.number" placeholder="Episode #" />
       <input type="text" v-model="formData.notes" placeholder="Notes" />

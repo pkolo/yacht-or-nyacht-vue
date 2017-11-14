@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <nuxt-child/>
+    <nuxt-child v-on:submitSong="pushSong" />
     <div class="content-container">
       <div class="content-section">
         <div class="content-section-header">Episode Tracklist</div>
@@ -31,6 +31,11 @@
         .then((res) => {
           return { episode: res.data }
         })
+    },
+    methods: {
+      pushSong (newSong) {
+        this.episode.songs.push(newSong)
+      }
     },
     components: {
       SongList
