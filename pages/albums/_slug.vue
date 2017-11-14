@@ -6,7 +6,7 @@
           {{ album.title }}
         </div>
         <div class="subtitle">
-          <span v-html="this.$options.filters.artistURL(album.artists)"></span>
+          <artist-links :artists="album.artists" />
           <span>{{ album.year }}</span>
           <span>{{ album.yachtski | roundNum }} Average Yachtski</span>
         </div>
@@ -30,6 +30,7 @@
 
   import { jayGradient } from '../../mixins/gradient'
 
+  import ArtistLinks from '../../components/ArtistLinks'
   import SongList from '../../components/SongList'
   import PlayerList from '../../components/PlayerList'
 
@@ -42,15 +43,12 @@
         })
     },
     components: {
+      ArtistLinks,
       SongList,
       PlayerList
     },
     mixins: [jayGradient],
     filters: {
-      artistURL: function (artists) {
-        let artistList = artists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
-        return artistList
-      },
       roundNum: function (number) {
         return +number.toFixed(2)
       }

@@ -17,7 +17,12 @@
   export default {
     props: {
       artists: Array,
-      featuredArtists: Array
+      featuredArtists: {
+        required: false,
+        default () {
+          return []
+        }
+      }
     }
   }
 </script>

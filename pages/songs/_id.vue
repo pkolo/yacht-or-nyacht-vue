@@ -4,7 +4,7 @@
       <div class="content-header" :style="{ background: getColor(song.yachtski) }">
         <div class="title">{{ song.title }}</div>
         <div class="subtitle">
-          <span v-html="this.$options.filters.artistURL(song.artists, song.featured_artists)"></span>
+          <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" />
           <span><i><a :href="song.album.url">{{ song.album.title }}</a></i></span>
           <span>{{ song.year }}</span>
         </div>
@@ -36,6 +36,7 @@
 
   import { jayGradient } from '../../mixins/gradient'
 
+  import ArtistLinks from '../../components/ArtistLinks'
   import YachtskiContainer from '../../components/YachtskiContainer'
   import PlayerList from '../../components/PlayerList'
 
@@ -47,6 +48,7 @@
         })
     },
     components: {
+      ArtistLinks,
       YachtskiContainer,
       PlayerList
     },
@@ -59,14 +61,6 @@
         } else {
           return 'Nyacht Rock'
         }
-      },
-      artistURL: function (artists, featuredArtists) {
-        let artistList = artists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
-        if (featuredArtists.length > 0) {
-          let featuredArtistList = featuredArtists.map(a => `<a href=${a.url}>${a.name}</a>`).join(', ')
-          return `${artistList} w/ ${featuredArtistList}`
-        }
-        return artistList
       }
     },
     mixins: [jayGradient]
