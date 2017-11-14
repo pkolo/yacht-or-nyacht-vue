@@ -5,7 +5,7 @@
         <div class="title">{{ song.title }}</div>
         <div class="subtitle">
           <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" />
-          <span><nuxt-link class="album-title" :to="{ path: `/albums/${song.album.id}/${urlString(song.album.title)}`}">{{ song.album.title }}</nuxt-link></span>
+
           <span>{{ song.year }}</span>
         </div>
       </div>
@@ -23,7 +23,7 @@
         <div class="content-section-header">Song Personnel</div>
         <player-list :players="song.players" />
       </div>
-      <div class="content-section" v-if="song.album.players.length > 0">
+      <div class="content-section" v-if="song.album && song.album.players.length > 0">
         <div class="content-section-header">Album Personnel</div>
         <player-list :players="song.album.players" />
       </div>
