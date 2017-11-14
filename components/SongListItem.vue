@@ -3,7 +3,7 @@
     <div>{{ song.yachtski | roundNum }}</div>
     <div class="artist-song-title">
       <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" :songId="song.id" :songTitle="song.title" />
-      <nuxt-link :to="{ path: `songs/${song.id}` }" class="song-title">{{ song.title }}</nuxt-link>
+      <nuxt-link :to="{ path: `/songs/${song.id}` }" class="song-title">{{ song.title }}</nuxt-link>
     </div>
     <div>{{ song.year }}</div>
     <div :style="{ backgroundColor: this.getColor(song.scores.jd) }">{{ song.scores.jd }}</div>

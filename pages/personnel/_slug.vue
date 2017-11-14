@@ -16,8 +16,8 @@
         <div class="content-section-header">Artist Tracklist</div>
         <song-list v-bind:showFilter="false" :songs="personnel.songs_as_artist" />
       </div>
-      <credit-list :credits="personnel.song_credits" :title="`Song Contributions`" />
-      <credit-list :credits="personnel.album_credits" :title="`Album Contributions`" />
+      <credit-list :credits="personnel.song_credits" :title="`Song Contributions`" :type="`songs`" />
+      <credit-list :credits="personnel.album_credits" :title="`Album Contributions`" :type="`albums`" />
     </div>
   </div>
 </template>
