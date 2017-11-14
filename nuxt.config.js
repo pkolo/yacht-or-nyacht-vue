@@ -57,6 +57,16 @@ module.exports = {
           path: '/songs/:id?/*',
           component: './pages/songs/_id.vue'
         },
+        {
+          name: 'albums-wild',
+          path: '/albums/:id?/*',
+          component: './pages/albums/_id.vue'
+        },
+        {
+          name: 'personnel-wild',
+          path: '/personnel/:id?/*',
+          component: './pages/personnel/_id.vue'
+        },
       ])
     }
   }
