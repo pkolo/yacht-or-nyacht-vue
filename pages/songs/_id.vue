@@ -11,6 +11,7 @@
       </div>
     </div>
     <div class="content-container">
+      <nuxt-child />
       <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
       <div class="content-section">
         <div class="content-section-header">Listen</div>
