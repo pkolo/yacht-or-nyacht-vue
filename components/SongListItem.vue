@@ -5,7 +5,7 @@
       <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" :songId="song.id" :songTitle="song.title" />
       <nuxt-link :to="{ path: `/songs/${song.id}/${urlString(song.title)}` }" class="song-title">{{ song.title }}</nuxt-link>
     </div>
-    <div>{{ song.year }}</div>
+    <div>{{ song[altColumnKey] }}</div>
     <div :style="{ backgroundColor: getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
     <div :style="{ backgroundColor: getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
     <div :style="{ backgroundColor: getColor(song.scores.steve) }">{{ song.scores.steve }}</div>
@@ -21,7 +21,8 @@
 
   export default {
     props: {
-      song: Object
+      song: Object,
+      altColumnKey: String
     },
     components: {
       ArtistLinks
