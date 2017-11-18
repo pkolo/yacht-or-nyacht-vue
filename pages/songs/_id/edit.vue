@@ -37,11 +37,14 @@
     methods: {
       albumSearch () {
         this.errors = []
+        console.log(process.env.baseUrl)
         axios({
           method: 'post',
-          url: `http://localhost:3000/api/v1/songs/${this.$route.params.id}/albums/search`
+          url: `${process.env.baseUrl}/songs/${this.$route.params.id}/albums/search`
         })
-          .then(res => console.log(res.data))
+          .then(res => {
+            this.$emit('updateSong', res.data)
+          })
           .catch(err => {
             this.showForm = true
             this.suggestions = err.response.data.suggestions
@@ -50,6 +53,29 @@
       },
       fillInput () {
         this.discogInput = event.target.textContent
+      },
+      createAlbum () {
+        this.errors = []
+        let data = {
+          album: {
+            discog_id: this.discogInput
+          }
+        }
+        axios({
+          method: 'post',
+          url: `${process.env.baseUrl}/songs/${this.$route.params.id}/albums`,
+          data: JSON.stringify(data),
+          headers: {
+            'Authorization': `Token token=${window.localStorage.getItem('yonToken')}`,
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(res => {
+            this.$emit('updateSong', res.data)
+          })
+          .catch(err => {
+            this.errors = err.response.data.errors
+          })
       }
     }
   }

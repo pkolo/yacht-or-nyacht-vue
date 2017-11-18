@@ -10,7 +10,7 @@
     <div :style="{ backgroundColor: getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
     <div :style="{ backgroundColor: getColor(song.scores.steve) }">{{ song.scores.steve }}</div>
     <div :style="{ backgroundColor: getColor(song.scores.dave) }">{{ song.scores.dave }}</div>
-    <div><a :href="song.episode.url">{{ song.episode.number }}</a></div>
+    <div><nuxt-link :to="{ path: `/episodes/${song.episode.id}/${urlString(song.episode.title)}`}">{{ song.episode.number }}</nuxt-link></div>
   </div>
 </template>
 

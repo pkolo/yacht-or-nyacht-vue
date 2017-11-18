@@ -11,12 +11,15 @@
       </div>
     </div>
     <div class="content-container">
-      <nuxt-child />
+      <nuxt-child v-on:updateSong="updateSong" />
       <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
       <div class="content-section">
         <div class="content-section-header">Listen</div>
         <div class="content-section listen-links">
-          <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="getColor(song.yachtski)" data-episode-id="94fb4fc2-5378-41e1-9836-04df553f8dc6"></div>
+          <div class="podcast-player">
+            <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="getColor(song.yachtski)" data-episode-id="94fb4fc2-5378-41e1-9836-04df553f8dc6"></div>
+            <nuxt-link :to="{ path: `/episodes/${song.episode.id}/${urlString(song.episode.title)}` }">{{song.episode.title}} Full Tracklist</nuxt-link>
+          </div>
           <iframe height="200" :src="`https://www.youtube.com/embed/${song.yt_id}?rel=0`" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
@@ -53,6 +56,11 @@
       ArtistLinks,
       YachtskiContainer,
       PlayerList
+    },
+    methods: {
+      updateSong (newSong) {
+        this.song = newSong
+      }
     },
     filters: {
       status: function (yachtski) {
