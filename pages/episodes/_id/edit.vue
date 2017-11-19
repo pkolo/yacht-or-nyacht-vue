@@ -1,48 +1,51 @@
 <template>
-  <div class="add-song-form">
-    <form @submit.prevent="addSong">
-      <div class="form-group">
-        <div class="form-input">
-          <label>Title: </label>
-          <input type="text" v-model="song.title"/>
+  <div class="edit-episode-container">
+    <button class="new-song-btn" @click="toggleForm">+ Add New Song</button>
+    <div class="add-song-form" v-show="showForm">
+      <form @submit.prevent="addSong">
+        <div class="form-group">
+          <div class="form-input">
+            <label>Title: </label>
+            <input type="text" v-model="song.title"/>
+          </div>
+          <div class="form-input">
+            <label>Artist: </label>
+            <input type="text" v-model="song.artist"/>
+          </div>
+          <div class="form-input">
+            <label>Year: </label>
+            <input type="number" v-model.number="song.year"/>
+          </div>
         </div>
-        <div class="form-input">
-          <label>Artist: </label>
-          <input type="text" v-model="song.artist"/>
-        </div>
-        <div class="form-input">
-          <label>Year: </label>
-          <input type="number" v-model.number="song.year"/>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <div class="form-input">
-          <label>JD: </label>
-          <input type="number" step="any" v-model.number="song.jd_score"/>
+        <div class="form-group">
+          <div class="form-input">
+            <label>JD: </label>
+            <input type="number" step="any" v-model.number="song.jd_score"/>
+          </div>
+          <div class="form-input">
+            <label>Hunter: </label>
+            <input type="number" step="any" v-model.number="song.hunter_score"/>
+          </div>
+          <div class="form-input">
+            <label>Steve: </label>
+            <input type="number" step="any" v-model.number="song.steve_score"/>
+          </div>
+          <div class="form-input">
+            <label>Dave: </label>
+            <input type="number" step="any" v-model.number="song.dave_score"/>
+          </div>
         </div>
-        <div class="form-input">
-          <label>Hunter: </label>
-          <input type="number" step="any" v-model.number="song.hunter_score"/>
-        </div>
-        <div class="form-input">
-          <label>Steve: </label>
-          <input type="number" step="any" v-model.number="song.steve_score"/>
-        </div>
-        <div class="form-input">
-          <label>Dave: </label>
-          <input type="number" step="any" v-model.number="song.dave_score"/>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <div class="yachtski-score">{{ avgScore }}</div>
-        <button type="submit">Submit</button>
-      </div>
-    </form>
-    <div class="errors" v-if="errors.length > 0">
-      <div class="error-msg" v-for="error in errors">
-        <p>{{ error }}</p>
+        <div class="form-group">
+          <div class="yachtski-score">{{ avgScore }}</div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+      <div class="errors" v-if="errors.length > 0">
+        <div class="error-msg" v-for="error in errors">
+          <p>{{ error }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -63,7 +66,8 @@
           dave_score: 0,
           artist: ''
         },
-        errors: []
+        errors: [],
+        showForm: false
       }
     },
     methods: {
@@ -84,12 +88,26 @@
           .then(res => {
             let newSong = res.data
             if (this.errors.length === 0) {
+              this.resetForm()
               this.$emit('submitSong', newSong)
             }
           })
           .catch(err => {
             this.errors = err.response.data.errors
           })
+      },
+      resetForm () {
+        this.song.title = ''
+        this.song.year = 0
+        this.song.jd_score = 0
+        this.song.hunter_score = 0
+        this.song.steve_score = 0
+        this.song.dave_score = 0
+        this.song.artist = ''
+        this.showForm = false
+      },
+      toggleForm () {
+        this.showForm = !this.showForm
       }
     },
     computed: {
@@ -102,10 +120,14 @@
 </script>
 
 <style>
-  .add-song-form {
-    border: 1px solid #444;
+  .edit-episode-container {
     width: 75%;
     margin: 20px auto;
+  }
+
+  .add-song-form {
+    padding: 20px;
+    border: 1px solid #444;
   }
 
   form {

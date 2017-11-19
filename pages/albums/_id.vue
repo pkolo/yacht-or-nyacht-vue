@@ -15,7 +15,7 @@
     <div class="content-container">
       <div class="content-section">
         <div class="content-section-header">Album Tracklist</div>
-        <song-list v-bind:showFilter="false" :songs="album.songs" />
+        <song-list v-bind:showFilter="false" :songs="album.songs" v-bind:altColumn="{header: 'Track #', key: 'track_no'}"/>
       </div>
       <div class="content-section" v-if="album.players.length > 0">
         <div class="content-section-header">Album Personnel</div>
