@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown-menu">
-    <button class="menu-btn">{{ name }}</button>
+    <div class="menu-btn">{{ name }}</div>
     <div class="dropdown-content">
       <div v-for="link in links">
         <a :href="link.url" target="_blank">{{ link.title }}</a>
@@ -25,9 +25,9 @@
   }
 
   .menu-btn {
-    background: #fff;
     padding: 10px;
     cursor: pointer;
+    margin: 5px;
   }
 
   .dropdown-content {
@@ -35,7 +35,6 @@
     position: absolute;
     background-color: #f9f9f9;
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
 
