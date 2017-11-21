@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import axios from '~/plugins/axios'
 
   export default {
     data () {
@@ -37,10 +37,9 @@
     methods: {
       albumSearch () {
         this.errors = []
-        console.log(process.env.baseUrl)
         axios({
           method: 'post',
-          url: `${process.env.baseUrl}/songs/${this.$route.params.id}/albums/search`
+          url: `/songs/${this.$route.params.id}/albums/search`
         })
           .then(res => {
             this.$emit('updateSong', res.data)

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import axios from '~/plugins/axios'
 
   import { utilities } from '../../mixins/utilities'
 
@@ -33,7 +33,7 @@
   export default {
     asyncData ({ params }) {
       let id = params.id.match(/\d+/)
-      return axios.get(`${process.env.baseUrl}/personnel/${id}`)
+      return axios.get(`/personnel/${id}`)
         .then((res) => {
           return { personnel: res.data }
         })

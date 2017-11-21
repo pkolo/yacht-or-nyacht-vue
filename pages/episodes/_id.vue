@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import axios from '~/plugins/axios'
 
   import { utilities } from '../../mixins/utilities'
 
@@ -27,7 +27,7 @@
   export default {
     asyncData ({ params }) {
       let id = params.id
-      return axios.get(`${process.env.baseUrl}/episodes/${id}`)
+      return axios.get(`/episodes/${id}`)
         .then((res) => {
           return { episode: res.data }
         })

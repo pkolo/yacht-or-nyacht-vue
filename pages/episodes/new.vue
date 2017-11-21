@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import axios from '~/plugins/axios'
 
   export default {
     data () {
@@ -33,7 +33,7 @@
         this.errors = []
         axios({
           method: 'post',
-          url: `${process.env.baseUrl}/episodes`,
+          url: `/episodes`,
           data: this.formData,
           headers: {'Authorization': `Token token=${window.localStorage.getItem('yonToken')}`}
         })
