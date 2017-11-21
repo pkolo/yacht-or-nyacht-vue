@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="content-container">
-      <nuxt-child v-on:updateSong="updateSong" />
+      <nuxt-child v-on:updateSong="updateSong" :title="song.title" />
       <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
       <div class="content-section">
         <div class="content-section-header">Listen</div>
@@ -51,6 +51,11 @@
         .then((res) => {
           return { song: res.data }
         })
+    },
+    head () {
+      return {
+        title: this.song.title
+      }
     },
     components: {
       ArtistLinks,

@@ -70,6 +70,14 @@
         showForm: false
       }
     },
+    props: {
+      title: String
+    },
+    head () {
+      return {
+        title: `Editing ${this.title}`
+      }
+    },
     methods: {
       addSong () {
         this.errors = []

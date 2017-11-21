@@ -40,14 +40,13 @@
       return axios.get(`/albums/${id}`)
         .then((res) => {
           return {
-            album: res.data,
-            title: res.data.title
+            album: res.data
           }
         })
     },
     head () {
       return {
-        title: this.title
+        title: this.album.title
       }
     },
     components: {

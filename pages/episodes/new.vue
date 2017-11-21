@@ -28,6 +28,11 @@
         errors: []
       }
     },
+    head () {
+      return {
+        title: 'Create New Episode'
+      }
+    },
     methods: {
       postEpisode () {
         this.errors = []

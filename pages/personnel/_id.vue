@@ -38,6 +38,11 @@
           return { personnel: res.data }
         })
     },
+    head () {
+      return {
+        title: this.personnel.name
+      }
+    },
     components: {
       SongList,
       CreditList

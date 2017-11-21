@@ -26,6 +26,11 @@
         errors: []
       }
     },
+    head () {
+      return {
+        title: 'Login'
+      }
+    },
     methods: {
       login () {
         this.errors = []

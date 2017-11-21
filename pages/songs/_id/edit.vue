@@ -34,6 +34,14 @@
         suggestions: []
       }
     },
+    props: {
+      title: String
+    },
+    head () {
+      return {
+        title: `Editing ${this.title}`
+      }
+    },
     methods: {
       albumSearch () {
         this.errors = []
