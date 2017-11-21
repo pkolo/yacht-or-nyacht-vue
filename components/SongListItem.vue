@@ -3,7 +3,7 @@
     <div>{{ song.yachtski | roundNum }}</div>
     <div class="artist-song-title">
       <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" :songId="song.id" :songTitle="song.title" />
-      <nuxt-link :to="{ path: `/songs/${song.id}/${urlString(song.title)}` }" class="song-title">{{ song.title }}</nuxt-link>
+      <span class="song-title"><nuxt-link :to="{ path: `/songs/${song.id}/${urlString(song.title)}` }"> {{ song.title }}</nuxt-link></span>
     </div>
     <div>{{ song[altColumnKey] }}</div>
     <div :style="{ backgroundColor: getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
@@ -40,7 +40,7 @@
   .song-list-item {
     display: grid;
     grid-template-columns: 1fr 6fr repeat(6, 1fr);
-    margin-bottom: 5px;
+    margin-bottom: 2px;
   }
 
   .song-list-item > * {
