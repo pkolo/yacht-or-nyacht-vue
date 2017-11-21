@@ -3,14 +3,14 @@
     <div>{{ song.yachtski | roundNum }}</div>
     <div class="artist-song-title">
       <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" :songId="song.id" :songTitle="song.title" />
-      <span class="song-title"><nuxt-link :to="{ path: `/songs/${song.id}/${urlString(song.title)}` }">{{ song.title }}</nuxt-link></span>
+      <span class="song-title"><nuxt-link :to="{ path: `${song.resource_url}/${urlString(song.title)}` }">{{ song.title }}</nuxt-link></span>
     </div>
     <div>{{ song[altColumnKey] }}</div>
     <div :style="{ backgroundColor: getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
     <div :style="{ backgroundColor: getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
     <div :style="{ backgroundColor: getColor(song.scores.steve) }">{{ song.scores.steve }}</div>
     <div :style="{ backgroundColor: getColor(song.scores.dave) }">{{ song.scores.dave }}</div>
-    <div><nuxt-link :to="{ path: `/episodes/${song.episode.id}/${urlString(song.episode.title)}`}">{{ song.episode.number }}</nuxt-link></div>
+    <div><nuxt-link :to="{ path: `${song.episode.resource_url}/${urlString(song.episode.title)}`}">{{ song.episode.number }}</nuxt-link></div>
   </div>
 </template>
 

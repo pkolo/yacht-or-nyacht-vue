@@ -8,7 +8,7 @@
         <bullet :score="credit.media.yachtski" />
         <div class="credit-title">
           <artist-links :artists="credit.media.artists" :featuredArtists="credit.media.featured_artists" />
-          <nuxt-link :to="{ path: `/${type}/${credit.media.id}/${urlString(credit.media.title)}` }" class="media-title">{{ credit.media.title }}</nuxt-link>
+          <span class="media-title"><nuxt-link :to="{ path: `${credit.media.resource_url}/${urlString(credit.media.title)}` }">{{ credit.media.title }}</nuxt-link></span>
         </div>
         <div class="credit-roles">{{ credit.roles }}</div>
       </div>

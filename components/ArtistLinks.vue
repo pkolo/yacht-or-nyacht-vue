@@ -2,12 +2,12 @@
   <div class="artist-link-section">
     <div class="artist-links">
       <span v-for="artist in artists">
-        <nuxt-link :to="{ path: `/personnel/${artist.id}/${urlString(artist.name)}`}">{{ artist.name }}</nuxt-link>
+        <nuxt-link :to="{ path: `${artist.resource_url}/${urlString(artist.name)}`}">{{ artist.name }}</nuxt-link>
       </span>
     </div>
     <div class="artist-links featured" v-if="featuredArtists.length > 0">
       <span v-for="artist in featuredArtists">
-        <nuxt-link :to="{ path: `/personnel/${artist.id}/${urlString(artist.name)}`}">{{ artist.name }}</nuxt-link>
+        <nuxt-link :to="{ path: `${artist.resource_url}/${urlString(artist.name)}`}">{{ artist.name }}</nuxt-link>
       </span>
     </div>
   </div>

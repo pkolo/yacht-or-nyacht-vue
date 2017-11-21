@@ -2,7 +2,7 @@
   <div class="player-list">
     <div class="player" v-for="player in players">
       <bullet :score="player.yachtski" />
-      <nuxt-link class="player-name" :to="{ path: `/personnel/${player.id}/${urlString(player.name)}` }">{{ player.name }}</nuxt-link>
+      <nuxt-link class="player-name" :to="{ path: `${player.resource_url}/${urlString(player.name)}` }">{{ player.name }}</nuxt-link>
       <div class="player-roles">{{ player.roles }}</div>
     </div>
   </div>
