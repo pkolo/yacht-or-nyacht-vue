@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '~/plugins/axios'
 
 import SongList from '../components/SongList'
 
@@ -22,7 +22,7 @@ export default {
     }
   },
   asyncData () {
-    return axios.get(`${process.env.baseUrl}/songs`)
+    return axios.get('/songs')
       .then((res) => {
         return { songs: res.data }
       })
