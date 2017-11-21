@@ -1,8 +1,10 @@
 <template>
   <nav>
     <div class="site-name"><a href="/">Yacht Or Nyacht?</a></div>
-    <nav-menu :name="`Yacht Rock Links`" :links="yrLinks" />
-    <nav-menu :name="`Yacht Or Nyacht Links`" :links="yonLinks" />
+    <div class="menu-section">
+      <nav-menu :name="`Yacht Rock Links`" :links="yrLinks" />
+      <nav-menu :name="`Yacht Or Nyacht Links`" :links="yonLinks" />
+    </div>
   </nav>
 </template>
 

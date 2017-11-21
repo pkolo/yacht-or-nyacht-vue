@@ -88,7 +88,7 @@
   .song-list-header {
     display: grid;
     grid-template-columns: 1fr 6fr repeat(6, 1fr);
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     background: #ababab;
     color: #fff;
   }

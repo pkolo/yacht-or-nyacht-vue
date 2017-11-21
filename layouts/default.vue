@@ -39,9 +39,17 @@
     color: #444;
   }
 
+  a:hover {
+    text-decoration: underline;
+  }
+
   .site-name {
     font-family: "Shrikhand", sans-serif;
     font-size: 24px;
+  }
+
+  .site-name a {
+    text-decoration: none;
   }
 
   .content-header-container {
