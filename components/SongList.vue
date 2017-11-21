@@ -2,17 +2,17 @@
   <div class="song-list">
     <song-list-filter v-show="showFilter" v-model="filterText"/>
     <div class="song-list-header">
-      <span @click="songSort('yachtski')">Yachtski</span>
+      <span class="num" @click="songSort('yachtski')">Yachtski</span>
       <div>
         <span @click="songSort('artists[0].name')">Artist</span> -
         <span @click="songSort('title')">Title</span>
       </div>
-      <span @click="songSort(altColumn.key)">{{ altColumn.header }}</span>
-      <span @click="songSort('scores.jd')">JD</span>
-      <span @click="songSort('scores.hunter')">Hunter</span>
-      <span @click="songSort('scores.steve')">Steve</span>
-      <span @click="songSort('scores.dave')">Dave</span>
-      <span @click="songSort('episode.number')">Ep #</span>
+      <span class="num" @click="songSort(altColumn.key)">{{ altColumn.header }}</span>
+      <span class="num" @click="songSort('scores.jd')">JD</span>
+      <span class="num" @click="songSort('scores.hunter')">Hunter</span>
+      <span class="num" @click="songSort('scores.steve')">Steve</span>
+      <span class="num" @click="songSort('scores.dave')">Dave</span>
+      <span class="num" @click="songSort('episode.number')">Ep #</span>
     </div>
     <div class="song" v-for="song in filteredSongs">
       <song-list-item :song="song" :altColumnKey="altColumn.key" />
@@ -96,5 +96,9 @@
   .song-list-header > * {
     padding: 10px;
     cursor: pointer;
+  }
+
+  .num {
+    text-align: right;
   }
 </style>
