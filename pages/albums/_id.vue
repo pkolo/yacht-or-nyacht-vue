@@ -39,8 +39,16 @@
       let id = params.id.match(/\d+/)
       return axios.get(`/albums/${id}`)
         .then((res) => {
-          return { album: res.data }
+          return {
+            album: res.data,
+            title: res.data.title
+          }
         })
+    },
+    head () {
+      return {
+        title: this.title
+      }
     },
     components: {
       ArtistLinks,

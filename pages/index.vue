@@ -27,6 +27,9 @@ export default {
         return { songs: res.data }
       })
   },
+  head: {
+    title: 'Home'
+  },
   components: {
     SongList
   },
