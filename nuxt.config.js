@@ -42,7 +42,7 @@ module.exports = {
     vendor: ['axios']
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'http://yacht-or-nyacht-api.herokuapp.com/api/v1'
+    baseUrl: process.env.BASE_URL
   },
   router: {
     extendRoutes (routes, resolve) {
