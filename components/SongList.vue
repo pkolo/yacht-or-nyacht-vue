@@ -1,6 +1,8 @@
 <template>
-  <div class="song-list">
-    <song-list-filter v-show="showFilter" v-model="filterText"/>
+  <div class="song-list-container">
+    <div class="widget-section">
+      <song-list-filter v-show="showFilter" v-model="filterText"/>
+    </div>
     <div class="song-list-header">
       <span class="num" @click="songSort('yachtski')">Yachtski</span>
       <div>
@@ -14,8 +16,10 @@
       <span class="num" @click="songSort('scores.dave')">Dave</span>
       <span class="num" @click="songSort('episode.number')">Ep #</span>
     </div>
-    <div class="song" v-for="song in filteredSongs">
-      <song-list-item :song="song" :altColumnKey="altColumn.key" />
+    <div class="song-list">
+      <div class="song" v-for="song in filteredSongs">
+        <song-list-item :song="song" :altColumnKey="altColumn.key" />
+      </div>
     </div>
   </div>
 </template>
@@ -85,17 +89,49 @@
 </script>
 
 <style>
-  .song-list-header {
+  .song-list-container {
+  }
+
+  .widget-section {
+  }
+
+  .song-list-header,
+  .song-list-item {
     display: grid;
     grid-template-columns: 1fr 6fr repeat(6, 1fr);
     margin-bottom: 2px;
     background: #ababab;
+  }
+
+  .song-list-header > *,
+  .song-list-item > * {
+    padding: 10px;
+  }
+
+  .song-list-header {
+    cursor: pointer;
     color: #fff;
   }
 
-  .song-list-header > * {
-    padding: 10px;
-    cursor: pointer;
+  .song-list-header span:hover {
+    text-decoration: underline;
+  }
+
+  .song-list {
+    overflow-y: auto;
+  }
+
+  .song-list::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  .song-list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+
+  .song-list::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
   }
 
   .num {

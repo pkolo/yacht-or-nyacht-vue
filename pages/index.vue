@@ -1,12 +1,14 @@
 <template>
-  <section class="container">
+  <section class="container" style="border: 1px solid #ababab">
     <div class="modal" v-show="showModal" @click="hideModal">
       <div class="modal-content">
         <h3><span class="site-name">Yacht or Nyacht?</span></h3>
         <p>Content here...</p>
       </div>
     </div>
-    <song-list v-bind:showFilter="true" :songs="songs" />
+    <div class="content-container">
+      <song-list v-bind:showFilter="true" :songs="songs" />
+    </div>
   </section>
 </template>
 

@@ -37,16 +37,6 @@
 </script>
 
 <style>
-  .song-list-item {
-    display: grid;
-    grid-template-columns: 1fr 6fr repeat(6, 1fr);
-    margin-bottom: 2px;
-  }
-
-  .song-list-item > * {
-    padding: 10px;
-  }
-
   .song-title {
     display: inline-block;
   }
