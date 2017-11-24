@@ -17,7 +17,7 @@
       <span class="num" @click="songSort('episode.number')">Ep #</span>
     </div>
     <div class="song-list">
-      <div class="song" v-for="song in filteredSongs">
+      <div class="song" v-for="song in sortedSongs" v-show="songSearch(song.title, song.artists[0].name)" >
         <song-list-item :song="song" :altColumnKey="altColumn.key" />
       </div>
     </div>
@@ -68,6 +68,9 @@
         } else {
           return 'asc'
         }
+      },
+      songSearch (title, artist) {
+        return (title.match(this.matchFilter) || artist.match(this.matchFilter))
       }
     },
     watch: {
@@ -76,9 +79,9 @@
       }
     },
     computed: {
-      filteredSongs () {
+      matchFilter () {
         let filter = new RegExp(this.filterText, 'i')
-        return this.sortedSongs.filter(song => (song.title.match(filter) || song.artists[0].name.match(filter)))
+        return filter
       }
     },
     components: {
@@ -100,16 +103,16 @@
     display: grid;
     grid-template-columns: 1fr 6fr repeat(6, 1fr);
     margin-bottom: 2px;
-    background: #ababab;
   }
 
   .song-list-header > *,
   .song-list-item > * {
-    padding: 10px;
+    padding: 7px;
   }
 
   .song-list-header {
     cursor: pointer;
+    background: #ababab;
     color: #fff;
   }
 
