@@ -2,6 +2,14 @@
   <div class="song-list-container">
     <div class="widget-section">
       <song-list-filter v-show="showFilter" v-model="filterText"/>
+      <div class="date-slider">
+        <input type="range" min="0" max="100" v-model="minScore"  list="steplist"/>
+        <datalist id="steplist">
+          <option>0</option>
+          <option>50</option>
+          <option>90</option>
+        </datalist>
+      </div>
     </div>
     <div class="song-list-header">
       <span class="num" @click="songSort('yachtski')">Yachtski</span>
@@ -17,7 +25,7 @@
       <span class="num" @click="songSort('episode.number')">Ep #</span>
     </div>
     <div class="song-list">
-      <div class="song" v-for="song in sortedSongs" v-show="songSearch(song.title, song.artists[0].name)" >
+      <div class="song" v-for="song in sortedSongs" v-show="songSwitch(song.title, song.artists[0].name, song.yachtski)" >
         <song-list-item :song="song" :altColumnKey="altColumn.key" />
       </div>
     </div>
@@ -35,7 +43,8 @@
         sortDesc: true,
         sortColumn: 'yachtski',
         filterText: '',
-        sortedSongs: orderBy(this.songs, ['yachtski'], ['desc'])
+        sortedSongs: orderBy(this.songs, ['yachtski'], ['desc']),
+        minScore: 0
       }
     },
     props: {
@@ -69,8 +78,8 @@
           return 'asc'
         }
       },
-      songSearch (title, artist) {
-        return (title.match(this.matchFilter) || artist.match(this.matchFilter))
+      songSwitch (title, artist, score) {
+        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && (score >= this.minScore))
       }
     },
     watch: {
@@ -96,6 +105,14 @@
   }
 
   .widget-section {
+    width: 50%;
+    margin: 20px auto;
+    padding: 25px 0;
+  }
+
+  .date-slider > input {
+    width: 100%;
+    padding: 10px 0;
   }
 
   .song-list-header,
