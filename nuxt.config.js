@@ -26,7 +26,7 @@ module.exports = {
   ** Build configuration
   */
   plugins: [
-    { src: '~/plugins/vue-slider-component', ssr: false }
+    { src: '~plugins/vue-slider-component.js', ssr: false }
   ],
   build: {
     /*

@@ -2,16 +2,7 @@
   <div class="song-list-container">
     <div class="widget-section">
       <song-list-filter v-show="showFilter" v-model="filterText"/>
-      <div class="date-slider">
-        <svg height="20" width="20" class="handle" draggable="true">
-          <circle cx="10" cy="10" r="8" stroke="black" stroke-width="1" fill="white" />
-        </svg>
-        <div class="slider-track">
-          <div style="background: rgb(231, 128, 114)">&nbsp</div>
-          <div style="background: rgb(204, 205, 112)">&nbsp</div>
-          <div style="background: rgb(87, 187, 138)">&nbsp</div>
-        </div>
-      </div>
+      <vue-slider v-model="maxScore" />
     </div>
     <div class="song-list-header">
       <span class="num" @click="songSort('yachtski')">Yachtski</span>
