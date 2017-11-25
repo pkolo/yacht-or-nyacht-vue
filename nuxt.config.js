@@ -25,6 +25,9 @@ module.exports = {
   /*
   ** Build configuration
   */
+  plugins: [
+    { src: '~/plugins/vue-slider-component', ssr: false }
+  ],
   build: {
     /*
     ** Run ESLint on save
@@ -39,7 +42,7 @@ module.exports = {
         })
       }
     },
-    vendor: ['axios']
+    vendor: ['axios', 'vue-slider-component']
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://yacht-or-nyacht-api.herokuapp.com/api/v1'
