@@ -3,7 +3,11 @@
     <div class="widget-section">
       <song-list-filter v-show="showFilter" v-model="filterText"/>
       <no-ssr>
-        <vue-slider v-model="maxScore" />
+        <vue-slider
+          ref="slider"
+          v-model="value"
+          v-bind="options"
+        />
       </no-ssr>
     </div>
     <div class="song-list-header">
@@ -20,7 +24,7 @@
       <span class="num" @click="songSort('episode.number')">Ep #</span>
     </div>
     <div class="song-list">
-      <div class="song" v-for="song in sortedSongs" v-show="songSwitch(song.title, song.artists[0].name, song.yachtski)" >
+      <div class="song" v-for="song in sortedSongs" v-show="songSwitch(song.title, song.artists[0].name)" >
         <song-list-item :song="song" :altColumnKey="altColumn.key" />
       </div>
     </div>
@@ -41,8 +45,15 @@
         sortColumn: 'yachtski',
         filterText: '',
         sortedSongs: orderBy(this.songs, ['yachtski'], ['desc']),
-        maxScore: 100,
-        minScore: 0
+        value: [0, 100],
+        options: {
+          bgStyle: {
+            'backgroundImage': '-webkit-linear-gradient(left, rgb(231, 128, 114), rgb(255, 214, 102), rgb(87, 187, 138))'
+          },
+          processStyle: {
+            'backgroundColor': 'rgba(0, 0, 0, 0.0)'
+          }
+        }
       }
     },
     props: {
@@ -77,7 +88,7 @@
         }
       },
       songSwitch (title, artist, score) {
-        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && (score >= this.minScore))
+        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)))
       }
     },
     watch: {
