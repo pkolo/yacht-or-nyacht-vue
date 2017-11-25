@@ -8,5 +8,3 @@ const Slider = {
 }
 
 Vue.use(Slider)
-
-export default Slider

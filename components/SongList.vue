@@ -2,7 +2,9 @@
   <div class="song-list-container">
     <div class="widget-section">
       <song-list-filter v-show="showFilter" v-model="filterText"/>
-      <vue-slider v-model="maxScore" />
+      <no-ssr>
+        <vue-slider v-model="maxScore" />
+      </no-ssr>
     </div>
     <div class="song-list-header">
       <span class="num" @click="songSort('yachtski')">Yachtski</span>
@@ -27,6 +29,8 @@
 
 <script>
   import { orderBy } from 'lodash'
+  import NoSSR from 'vue-no-ssr'
+
   import SongListFilter from './SongListFilter'
   import SongListItem from './SongListItem'
 
@@ -88,6 +92,7 @@
       }
     },
     components: {
+      'no-ssr': NoSSR,
       SongListFilter,
       SongListItem
     }
