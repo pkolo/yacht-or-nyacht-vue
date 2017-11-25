@@ -4,6 +4,7 @@
       <song-list-filter v-show="showFilter" v-model="filterText"/>
       <no-ssr>
         <vue-slider
+          style="padding-top: 40px"
           ref="slider"
           v-model="value"
           v-bind="options"
@@ -24,7 +25,7 @@
       <span class="num" @click="songSort('episode.number')">Ep #</span>
     </div>
     <div class="song-list">
-      <div class="song" v-for="song in sortedSongs" v-show="songSwitch(song.title, song.artists[0].name)" >
+      <div class="song" v-for="song in sortedSongs" v-show="songSwitch(song.title, song.artists[0].name, song.yachtski)" >
         <song-list-item :song="song" :altColumnKey="altColumn.key" />
       </div>
     </div>
@@ -47,6 +48,10 @@
         sortedSongs: orderBy(this.songs, ['yachtski'], ['desc']),
         value: [0, 100],
         options: {
+          tooltipStyle: {
+            'backgroundColor': '#ababab',
+            'borderColor': '#ababab'
+          },
           bgStyle: {
             'backgroundImage': '-webkit-linear-gradient(left, rgb(231, 128, 114), rgb(255, 214, 102), rgb(87, 187, 138))'
           },
@@ -88,7 +93,7 @@
         }
       },
       songSwitch (title, artist, score) {
-        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)))
+        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && (score >= this.value[0] && score <= this.value[1]))
       }
     },
     watch: {
@@ -118,16 +123,6 @@
     width: 50%;
     margin: 20px auto;
     padding: 25px 0;
-  }
-
-  .handle {
-    position: absolute;
-  }
-
-  .slider-track {
-    display: grid;
-    grid-template-columns: 5fr 4fr 1fr;
-    line-height: 10px;
   }
 
   .song-list-header,
