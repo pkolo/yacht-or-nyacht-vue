@@ -6,8 +6,8 @@
         ref="slider"
         :value="value"
         v-bind="options"
-        v-model="newVal"
-        v-on:callback="updateRange()"
+        v-model="value"
+        @drag-end="updateRange"
       />
     </no-ssr>
     <button @click="setValue([0,100])">All Songs</button>
@@ -24,6 +24,8 @@
     data () {
       return {
         options: {
+          min: 0,
+          max: 100,
           clickable: false,
           tooltipStyle: {
             'backgroundColor': '#ababab',
@@ -36,20 +38,17 @@
             'backgroundColor': 'rgba(0, 0, 0, 0.0)'
           }
         },
-        newVal: this.value
+        value: [0, 100]
       }
     },
     methods: {
       updateRange () {
-        this.$emit('input', this.newVal)
+        this.$emit('input', this.value)
       },
-      setValue (newVal) {
-        this.newVal = newVal
+      setValue (newValue) {
+        this.value = newValue
         this.updateRange()
       }
-    },
-    props: {
-      value: Array
     },
     components: {
       'no-ssr': NoSSR

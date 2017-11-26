@@ -39,8 +39,7 @@
         sortColumn: 'yachtski',
         filterText: '',
         sortedSongs: orderBy(this.songs, ['yachtski'], ['desc']),
-        value: [0, 100],
-        newVal: []
+        value: [0, 100]
       }
     },
     props: {
@@ -75,7 +74,10 @@
         }
       },
       songSwitch (title, artist, score) {
-        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && (score >= this.value[0] && score <= this.value[1]))
+        if (this.value[1] === 100) {
+          return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && ((score >= this.value[0]) && score <= this.value[1]))
+        }
+        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && ((score >= this.value[0]) && score < this.value[1]))
       },
       updateValue (newVal) {
         this.value = newVal
