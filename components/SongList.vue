@@ -115,7 +115,7 @@
   .song-list-header,
   .song-list-item {
     display: grid;
-    grid-template-columns: 1fr 6fr repeat(6, 1fr);
+    grid-template-columns: 1fr 7fr repeat(6, 1fr);
     margin-bottom: 2px;
   }
 

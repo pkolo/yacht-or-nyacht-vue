@@ -28,13 +28,15 @@
           min: 0,
           max: 100,
           clickable: false,
+          height: 12,
           tooltipStyle: {
             'backgroundColor': '#ababab',
             'borderColor': '#ababab'
           },
           tooltipDir: ['left', 'right'],
           bgStyle: {
-            'backgroundImage': '-webkit-linear-gradient(left, rgb(231, 128, 114), rgb(255, 214, 102), rgb(87, 187, 138))'
+            'background': '-webkit-linear-gradient(left, rgb(231, 128, 114), rgb(255, 214, 102), rgb(87, 187, 138))',
+            'boxShadow': 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.15)'
           },
           processStyle: {
             'backgroundColor': 'rgba(0, 0, 0, 0.0)'
