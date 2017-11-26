@@ -1,8 +1,13 @@
 <template>
   <div class="slider-container">
+    <div class="button-group">
+      <button @click="setValue([0,100])">All Songs</button>
+      <button style="background: rgb(87,187,138)" @click="setValue([90,100])">Essentials</button>
+      <button style="background: rgb(194, 204, 114)" @click="setValue([50,100])">Yacht Rock</button>
+      <button style="background: rgb(231, 128, 114)" @click="setValue([0,50])">Nyacht Rock</button>
+    </div>
     <no-ssr>
       <vue-slider
-        style="padding-top: 40px"
         ref="slider"
         :value="value"
         v-bind="options"
@@ -10,10 +15,6 @@
         @drag-end="updateRange"
       />
     </no-ssr>
-    <button @click="setValue([0,100])">All Songs</button>
-    <button @click="setValue([0,50])">Nyacht</button>
-    <button @click="setValue([50,100])">Yacht</button>
-    <button @click="setValue([90,100])">Essential</button>
   </div>
 </template>
 
@@ -31,6 +32,7 @@
             'backgroundColor': '#ababab',
             'borderColor': '#ababab'
           },
+          tooltipDir: ['left', 'right'],
           bgStyle: {
             'backgroundImage': '-webkit-linear-gradient(left, rgb(231, 128, 114), rgb(255, 214, 102), rgb(87, 187, 138))'
           },
@@ -55,3 +57,22 @@
     }
   }
 </script>
+
+<style>
+  .button-group {
+    padding: 20px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+  }
+
+  button {
+    background: #ababab;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+  }
+</style>
