@@ -1,14 +1,20 @@
 <template>
-  <no-ssr>
-    <vue-slider
-      style="padding-top: 40px"
-      ref="slider"
-      :value="value"
-      v-bind="options"
-      v-model="newVal"
-      v-on:callback="updateRange()"
-    />
-  </no-ssr>
+  <div class="slider-container">
+    <no-ssr>
+      <vue-slider
+        style="padding-top: 40px"
+        ref="slider"
+        :value="value"
+        v-bind="options"
+        v-model="newVal"
+        v-on:callback="updateRange()"
+      />
+    </no-ssr>
+    <button @click="setValue([0,100])">All Songs</button>
+    <button @click="setValue([0,50])">Nyacht</button>
+    <button @click="setValue([50,100])">Yacht</button>
+    <button @click="setValue([90,100])">Essential</button>
+  </div>
 </template>
 
 <script>
@@ -18,6 +24,7 @@
     data () {
       return {
         options: {
+          clickable: false,
           tooltipStyle: {
             'backgroundColor': '#ababab',
             'borderColor': '#ababab'
@@ -35,6 +42,10 @@
     methods: {
       updateRange () {
         this.$emit('input', this.newVal)
+      },
+      setValue (newVal) {
+        this.newVal = newVal
+        this.updateRange()
       }
     },
     props: {

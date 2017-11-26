@@ -2,7 +2,7 @@
   <div class="song-list-container">
     <div class="widget-section" v-show="showFilter">
       <song-list-filter v-model="filterText"/>
-      <song-list-slider v-model="value" v-on:slider-change="updateValue(newVal)" />
+      <song-list-slider v-model="value" />
     </div>
     <div class="song-list-header">
       <span class="num" @click="songSort('yachtski')">Yachtski</span>
@@ -75,7 +75,7 @@
         }
       },
       songSwitch (title, artist, score) {
-        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && (score >= this.value[0] && score <= (this.value[1])))
+        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && (score >= this.value[0] && score <= this.value[1]))
       },
       updateValue (newVal) {
         this.value = newVal
