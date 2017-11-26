@@ -1,16 +1,16 @@
 <template>
   <div class="song-list-item" :style="{ backgroundColor: getColor(song.yachtski) }">
-    <div>{{ song.yachtski | roundNum }}</div>
+    <div class="num">{{ song.yachtski | roundNum }}</div>
     <div class="artist-song-title">
       <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" :songId="song.id" :songTitle="song.title" />
-      <span class="song-title"><nuxt-link :to="{ path: `/songs/${song.id}/${urlString(song.title)}` }"> {{ song.title }}</nuxt-link></span>
+      <span class="song-title"><nuxt-link :to="{ path: `${song.resource_url}/${urlString(song.title)}` }">{{ song.title }}</nuxt-link></span>
     </div>
-    <div>{{ song[altColumnKey] }}</div>
-    <div :style="{ backgroundColor: getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
-    <div :style="{ backgroundColor: getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
-    <div :style="{ backgroundColor: getColor(song.scores.steve) }">{{ song.scores.steve }}</div>
-    <div :style="{ backgroundColor: getColor(song.scores.dave) }">{{ song.scores.dave }}</div>
-    <div><nuxt-link :to="{ path: `/episodes/${song.episode.id}/${urlString(song.episode.title)}`}">{{ song.episode.number }}</nuxt-link></div>
+    <div class="num">{{ song[altColumnKey] }}</div>
+    <div class="num" :style="{ backgroundColor: getColor(song.scores.jd) }">{{ song.scores.jd }}</div>
+    <div class="num" :style="{ backgroundColor: getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
+    <div class="num" :style="{ backgroundColor: getColor(song.scores.steve) }">{{ song.scores.steve }}</div>
+    <div class="num" :style="{ backgroundColor: getColor(song.scores.dave) }">{{ song.scores.dave }}</div>
+    <div class="num"><nuxt-link :to="{ path: `${song.episode.resource_url}/${urlString(song.episode.title)}`}">{{ song.episode.number }}</nuxt-link></div>
   </div>
 </template>
 
@@ -37,16 +37,6 @@
 </script>
 
 <style>
-  .song-list-item {
-    display: grid;
-    grid-template-columns: 1fr 6fr repeat(6, 1fr);
-    margin-bottom: 2px;
-  }
-
-  .song-list-item > * {
-    padding: 10px;
-  }
-
   .song-title {
     display: inline-block;
   }

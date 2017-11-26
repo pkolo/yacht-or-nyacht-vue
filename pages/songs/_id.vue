@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="content-container">
-      <nuxt-child v-on:updateSong="updateSong" />
+      <nuxt-child v-on:updateSong="updateSong" :title="song.title" />
       <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
       <div class="content-section">
         <div class="content-section-header">Listen</div>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import axios from '~/plugins/axios'
 
   import { utilities } from '../../mixins/utilities'
 
@@ -47,10 +47,15 @@
   export default {
     asyncData ({ params }) {
       let id = params.id.match(/\d+/)
-      return axios.get(`${process.env.baseUrl}/songs/${id}`)
+      return axios.get(`/songs/${id}`)
         .then((res) => {
           return { song: res.data }
         })
+    },
+    head () {
+      return {
+        title: this.song.title
+      }
     },
     components: {
       ArtistLinks,

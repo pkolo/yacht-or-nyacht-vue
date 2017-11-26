@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'yacht-or-nyacht-vue',
+    titleTemplate: '%s - Yacht or Nyacht?',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -25,6 +25,9 @@ module.exports = {
   /*
   ** Build configuration
   */
+  plugins: [
+    { src: '~plugins/vue-slider-component.js', ssr: false }
+  ],
   build: {
     /*
     ** Run ESLint on save
@@ -39,7 +42,7 @@ module.exports = {
         })
       }
     },
-    vendor: ['axios']
+    vendor: ['axios', 'vue-slider-component']
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://yacht-or-nyacht-api.herokuapp.com/api/v1'

@@ -18,12 +18,6 @@
 </script>
 
 <style>
-  .song-list-filter {
-    width: 50%;
-    margin: 20px auto;
-    padding: 25px 0;
-  }
-
   .song-list-filter > input {
     width: 100%;
     height: 2em;

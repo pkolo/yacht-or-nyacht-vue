@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import axios from '~/plugins/axios'
 
   export default {
     data () {
@@ -26,10 +26,15 @@
         errors: []
       }
     },
+    head () {
+      return {
+        title: 'Login'
+      }
+    },
     methods: {
       login () {
         this.errors = []
-        axios.post(`${process.env.baseUrl}/login`, this.formData)
+        axios.post(`/login`, this.formData)
           .then(res => window.localStorage.setItem('yonToken', res.data.token))
           .catch(error => {
             this.errors = error.response.data.errors

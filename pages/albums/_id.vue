@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import axios from '~/plugins/axios'
 
   import { utilities } from '../../mixins/utilities'
 
@@ -37,10 +37,17 @@
   export default {
     asyncData ({ params }) {
       let id = params.id.match(/\d+/)
-      return axios.get(`${process.env.baseUrl}/albums/${id}`)
+      return axios.get(`/albums/${id}`)
         .then((res) => {
-          return { album: res.data }
+          return {
+            album: res.data
+          }
         })
+    },
+    head () {
+      return {
+        title: this.album.title
+      }
     },
     components: {
       ArtistLinks,

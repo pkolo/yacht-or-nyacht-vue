@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import axios from '~/plugins/axios'
 
   export default {
     data () {
@@ -28,12 +28,17 @@
         errors: []
       }
     },
+    head () {
+      return {
+        title: 'Create New Episode'
+      }
+    },
     methods: {
       postEpisode () {
         this.errors = []
         axios({
           method: 'post',
-          url: `${process.env.baseUrl}/episodes`,
+          url: `/episodes`,
           data: this.formData,
           headers: {'Authorization': `Token token=${window.localStorage.getItem('yonToken')}`}
         })

@@ -52,7 +52,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import axios from '~/plugins/axios'
 
   export default {
     data () {
@@ -70,6 +70,14 @@
         showForm: false
       }
     },
+    props: {
+      title: String
+    },
+    head () {
+      return {
+        title: `Editing ${this.title}`
+      }
+    },
     methods: {
       addSong () {
         this.errors = []
@@ -79,7 +87,7 @@
         axios({
           method: 'post',
           data: JSON.stringify(formData),
-          url: `${process.env.baseUrl}/episodes/${this.$route.params.id}/songs`,
+          url: `/episodes/${this.$route.params.id}/songs`,
           headers: {
             'Authorization': `Token token=${window.localStorage.getItem('yonToken')}`,
             'Content-Type': 'application/json'
