@@ -1,15 +1,8 @@
 <template>
   <div class="song-list-container">
-    <div class="widget-section">
-      <song-list-filter v-show="showFilter" v-model="filterText"/>
-      <no-ssr>
-        <vue-slider
-          style="padding-top: 40px"
-          ref="slider"
-          v-model="value"
-          v-bind="options"
-        />
-      </no-ssr>
+    <div class="widget-section" v-show="showFilter">
+      <song-list-filter v-model="filterText"/>
+      <song-list-slider v-model="value" v-on:slider-change="updateValue(newVal)" />
     </div>
     <div class="song-list-header">
       <span class="num" @click="songSort('yachtski')">Yachtski</span>
@@ -34,9 +27,9 @@
 
 <script>
   import { orderBy } from 'lodash'
-  import NoSSR from 'vue-no-ssr'
 
   import SongListFilter from './SongListFilter'
+  import SongListSlider from './SongListSlider'
   import SongListItem from './SongListItem'
 
   export default {
@@ -47,18 +40,7 @@
         filterText: '',
         sortedSongs: orderBy(this.songs, ['yachtski'], ['desc']),
         value: [0, 100],
-        options: {
-          tooltipStyle: {
-            'backgroundColor': '#ababab',
-            'borderColor': '#ababab'
-          },
-          bgStyle: {
-            'backgroundImage': '-webkit-linear-gradient(left, rgb(231, 128, 114), rgb(255, 214, 102), rgb(87, 187, 138))'
-          },
-          processStyle: {
-            'backgroundColor': 'rgba(0, 0, 0, 0.0)'
-          }
-        }
+        newVal: []
       }
     },
     props: {
@@ -93,7 +75,10 @@
         }
       },
       songSwitch (title, artist, score) {
-        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && (score >= this.value[0] && score <= this.value[1]))
+        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && (score >= this.value[0] && score <= (this.value[1])))
+      },
+      updateValue (newVal) {
+        this.value = newVal
       }
     },
     watch: {
@@ -108,7 +93,7 @@
       }
     },
     components: {
-      'no-ssr': NoSSR,
+      SongListSlider,
       SongListFilter,
       SongListItem
     }
