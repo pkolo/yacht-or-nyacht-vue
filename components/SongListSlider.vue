@@ -3,7 +3,7 @@
     <div class="button-group">
       <button @click="setValue([0,100])">All Songs</button>
       <button style="background: rgb(87,187,138)" @click="setValue([90,100])">Essentials</button>
-      <button style="background: rgb(194, 204, 114)" @click="setValue([50,100])">Yacht Rock</button>
+      <button style="background: rgb(147, 196, 125)" @click="setValue([50,100])">Yacht Rock</button>
       <button style="background: rgb(231, 128, 114)" @click="setValue([0,50])">Nyacht Rock</button>
     </div>
     <no-ssr>
