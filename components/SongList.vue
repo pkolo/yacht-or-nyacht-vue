@@ -18,7 +18,7 @@
       <span class="num" @click="songSort('episode.number')">Ep #</span>
     </div>
     <div class="song-list">
-      <div class="song" v-for="song in sortedSongs" v-show="songSwitch(song.title, song.artists[0].name, song.yachtski)" >
+      <div class="song" v-for="song in sortedSongs" v-show="songSwitch(song.title, song.artists, song.featured_artists, song.yachtski)" >
         <song-list-item :song="song" :altColumnKey="altColumn.key" />
       </div>
     </div>
@@ -73,11 +73,13 @@
           return 'asc'
         }
       },
-      songSwitch (title, artist, score) {
+      songSwitch (title, artists, feats, score) {
+        let allArtists = artists.concat(feats)
+        let artistNames = allArtists.map(a => a.name).join(' ')
         if (this.value[1] === 100) {
-          return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && ((score >= this.value[0]) && score <= this.value[1]))
+          return ((title.match(this.matchFilter) || artistNames.match(this.matchFilter)) && ((score >= this.value[0]) && score <= this.value[1]))
         }
-        return ((title.match(this.matchFilter) || artist.match(this.matchFilter)) && ((score >= this.value[0]) && score < this.value[1]))
+        return ((title.match(this.matchFilter) || artistNames.match(this.matchFilter)) && ((score >= this.value[0]) && score < this.value[1]))
       },
       updateValue (newVal) {
         this.value = newVal
