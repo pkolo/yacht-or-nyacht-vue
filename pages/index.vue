@@ -1,5 +1,5 @@
 <template>
-  <section class="container" style="border: 1px solid #ababab">
+  <section class="container">
     <div class="modal" v-show="showModal" @click="hideModal">
       <div class="modal-content">
         <h3><span class="site-name">Yacht or Nyacht?</span></h3>
