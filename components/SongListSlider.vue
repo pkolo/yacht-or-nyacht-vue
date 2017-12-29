@@ -1,10 +1,10 @@
 <template>
   <div class="slider-container">
     <div class="button-group">
-      <button @click="setValue([0,100])">All Songs</button>
-      <button style="background: rgb(87,187,138)" @click="setValue([90,100])">Essentials</button>
-      <button style="background: rgb(147, 196, 125)" @click="setValue([50,100])">Yacht Rock</button>
-      <button style="background: rgb(231, 128, 114)" @click="setValue([0,50])">Nyacht Rock</button>
+      <div class="filter-button" @click="setValue([0,100])">All Songs</div>
+      <div class="filter-button green" @click="setValue([90,100])">Essentials</div>
+      <div class="filter-button yellow" @click="setValue([50,100])">Yacht Rock</div>
+      <div class="filter-button red" @click="setValue([0,50])">Nyacht Rock</div>
     </div>
     <no-ssr>
       <vue-slider
@@ -33,7 +33,7 @@
             'backgroundColor': '#ababab',
             'borderColor': '#ababab'
           },
-          tooltipDir: ['left', 'right'],
+          tooltipDir: ['bottom', 'bottom'],
           bgStyle: {
             'background': '-webkit-linear-gradient(left, rgb(231, 128, 114), rgb(255, 214, 102), rgb(87, 187, 138))',
             'boxShadow': 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.15)'
@@ -62,19 +62,59 @@
 
 <style>
   .button-group {
-    padding: 20px;
-    width: 100%;
-    display: inline-flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    padding-bottom: 10px;
   }
 
-  button {
+  .filter-button {
     background: #ababab;
     padding: 10px;
-    outline: none;
-    border: none;
     border-radius: 5px;
-    font-family: 'Lato', sans-serif;
     color: #fff;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .filter-button.red {
+    background: rgb(231, 128, 114);
+  }
+
+  .filter-button.yellow {
+    background: rgb(147, 196, 125);
+  }
+
+  .filter-button.green {
+    background: rgb(87,187,138);
+  }
+
+  @media (max-width: 768px) {
+    .button-group {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+
+    .filter-button {
+      background: none;
+      padding: 5px 10px;
+      color: #ababab;
+      text-decoration: underline;
+    }
+
+    .filter-button.red {
+      background: none;
+      color: rgb(231, 128, 114);
+    }
+
+    .filter-button.yellow {
+      background: none;
+      color: rgb(147, 196, 125);
+    }
+
+    .filter-button.green {
+      background: none;
+      color: rgb(87,187,138);
+    }
   }
 </style>

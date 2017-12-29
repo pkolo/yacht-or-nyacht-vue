@@ -110,8 +110,8 @@
 
   .widget-section {
     width: 50%;
-    margin: 20px auto;
-    padding: 25px 0;
+    margin: 0 auto 20px;
+    padding: 15px 0 25px;
   }
 
   .song-list-header,
@@ -169,6 +169,10 @@
 
     .hidden-sm {
       display: none;
+    }
+
+    .widget-section {
+      width: 80%;
     }
   }
 
