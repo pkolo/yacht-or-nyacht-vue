@@ -118,7 +118,7 @@
   .song-list-item {
     display: grid;
     grid-template-columns: minmax(68px, 1fr) 7fr repeat(6, minmax(58px, 1fr));
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
 
   .song-list-header {

@@ -38,7 +38,7 @@
 
 <style>
   .song-list-item > * {
-    padding: 10px;
+    padding: 8px;
   }
 
   .song-title {

@@ -19,7 +19,7 @@
 
 <style>
   .song-list-filter {
-    padding-bottom: 10px;
+    padding-bottom: 15px;
   }
 
   .song-list-filter > input {
