@@ -14,13 +14,21 @@
       <nuxt-child v-on:updateSong="updateSong" :title="song.title" />
       <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
       <div class="content-section">
-        <div class="content-section-header">Listen</div>
-        <div class="content-section listen-links">
-          <div class="podcast-player">
-            <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="getColor(song.yachtski)" data-episode-id="94fb4fc2-5378-41e1-9836-04df553f8dc6"></div>
-            <nuxt-link :to="{ path: `/episodes/${song.episode.id}/${urlString(song.episode.title)}` }">{{song.episode.title}} Full Tracklist</nuxt-link>
+        <div class="listen-links">
+          <div>
+            <div class="content-section-header"><nuxt-link :to="{ path: `/episodes/${song.episode.id}/${urlString(song.episode.title)}` }">{{song.episode.title}}</nuxt-link></div>
+            <div class="content-section">
+              <div class="podcast-player">
+                <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="getColor(song.yachtski)" data-episode-id="94fb4fc2-5378-41e1-9836-04df553f8dc6"></div>
+              </div>
+            </div>
           </div>
-          <iframe height="200" :src="`https://www.youtube.com/embed/${song.yt_id}?rel=0`" frameborder="0" allowfullscreen></iframe>
+          <div>
+            <div class="content-section-header">Listen</div>
+            <div class="content-section">
+              <iframe height="200" :src="`https://www.youtube.com/embed/${song.yt_id}?rel=0`" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
         </div>
       </div>
       <div class="content-section" v-if="song.players.length > 0">

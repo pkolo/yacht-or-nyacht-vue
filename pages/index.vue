@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section class="index-container">
     <div class="modal" v-show="showModal" @click="hideModal">
       <div class="modal-content">
         <h3><span class="site-name">Yacht or Nyacht?</span></h3>
@@ -44,6 +44,10 @@ export default {
 </script>
 
 <style>
+  .index-container {
+    max-width: 1250px;
+  }
+
   .modal {
       position: fixed; /* Stay in place */
       z-index: 1; /* Sit on top */

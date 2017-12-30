@@ -52,8 +52,12 @@
     text-decoration: none;
   }
 
+  .container {
+    margin: 0 auto;
+    max-width: 1023px;
+  }
+
   .content-header-container {
-    padding: 10px;
     color: #fff;
     text-align: center;
   }
