@@ -1,5 +1,5 @@
 <template>
-  <div class="song-list-container">
+  <div class="song-list-container" :class="{ small: !showFilter }">
     <div class="widget-section" v-show="showFilter">
       <song-list-filter v-model="filterText"/>
       <song-list-slider v-model="value" />
@@ -105,7 +105,8 @@
 </script>
 
 <style>
-  .song-list-container {
+  .small {
+    font-size: 13px;
   }
 
   .widget-section {
