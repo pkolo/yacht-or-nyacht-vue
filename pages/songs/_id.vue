@@ -93,7 +93,7 @@
 <style>
   .listen-links {
     display: grid;
-    grid-template-columns: 575px 1fr;
+    grid-template-columns: 3fr 1fr;
     grid-gap: 20px;
   }
 </style>

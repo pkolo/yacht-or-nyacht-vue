@@ -109,4 +109,10 @@
   .host-score {
     text-align: right;
   }
+
+  @media (max-width: 768px) {
+    .yachtski-container {
+      width: 95%;
+    }
+  }
 </style>
