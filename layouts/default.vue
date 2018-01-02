@@ -59,7 +59,6 @@
 
   .content-header-container {
     color: #fff;
-    text-align: center;
   }
 
   .content-header-container a,
@@ -70,7 +69,7 @@
   }
 
   .content-header {
-    padding: 20px 10px;
+    padding: 20px 20px;
     margin-bottom: 40px;
   }
 
