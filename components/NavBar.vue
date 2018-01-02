@@ -15,6 +15,10 @@
       return {
         yrLinks: [
           {
+            title: 'Beyond Yacht Rock',
+            url: 'http://www.feralaudio.com/show/beyond-yacht-rock/'
+          },
+          {
             title: 'Yacht Rock Official',
             url: 'http://www.yachtrock.com/'
           },
