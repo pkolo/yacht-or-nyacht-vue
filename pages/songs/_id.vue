@@ -91,4 +91,16 @@
     grid-template-columns: 3fr 1fr;
     grid-gap: 20px;
   }
+
+  @media (max-width: 425px) {
+    .content-header-container {
+      padding: 0;
+      margin-bottom: 40px;
+    }
+
+    .content-header.song-header {
+      margin-bottom: 0;
+      padding: 10px 10px 0;
+    }
+  }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="yachtski-container" :style="{ background: yachtskiColor() }">
-    <iframe height="200" width="200" :src="`https://www.youtube.com/embed/${yt}?rel=0`" frameborder="0" allowfullscreen></iframe>
+    <iframe class="yt-frame" :src="`https://www.youtube.com/embed/${yt}?rel=0`" frameborder="0" allowfullscreen></iframe>
 
     <div class="scores-section">
       <div class="yachtski-big-score" :style="{ color: yachtskiColor(), background: `linear-gradient(to left, rgb(255, 255, 255) 50%, ${yachtskiColor()})` }">
@@ -92,5 +92,40 @@
 
   .yachtski-score {
     font-size: 50px;
+  }
+
+  .yt-frame {
+    height: 200px;
+    width:200px;
+  }
+
+  @media (max-width: 768px) {
+    .yachtski-score {
+      font-size: 36px;
+    }
+
+    .host-score {
+      font-size: 14px;
+    }
+
+    .yachtski-status {
+      font-size: 12px;
+    }
+
+    .yt-frame {
+      height: 175px;
+      width: 175px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .yachtski-container {
+      padding: 10px 0 0 0;
+    }
+
+    .yachtski-status {
+      font-size: 10px;
+      font-weight: 400;
+    }
   }
 </style>

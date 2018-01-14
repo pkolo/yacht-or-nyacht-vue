@@ -73,7 +73,7 @@
     margin-bottom: 40px;
   }
 
-  .content-header > .title {
+  .content-header .title {
     font-size: 50px;
   }
 
@@ -103,6 +103,31 @@
 
   .album-title {
     font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .content-header .title {
+      font-size: 36px;
+    }
+
+    .content-header > .subtitle {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .content-header .title {
+      font-size: 24px;
+    }
+
+    .content-header > .subtitle {
+      font-size: 14px;
+    }
+
+    .subtitle > * + *:before{
+      content: " | ";
+      padding: 0 5px;
+    }
   }
 
 </style>
