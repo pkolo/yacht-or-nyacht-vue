@@ -43,9 +43,9 @@
     filters: {
       status: function (yachtski) {
         if (yachtski >= 90) {
-          return 'Essential Yacht Rock'
+          return 'Essential Yacht'
         } else if (yachtski >= 50) {
-          return 'Certified Yacht Rock'
+          return 'Yacht Rock'
         } else {
           return 'Nyacht Rock'
         }
