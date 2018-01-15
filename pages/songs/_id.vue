@@ -1,7 +1,7 @@
 <template>
   <section class="container" :style="{ border: `1px ${getColor(song.yachtski)} solid` }">
     <div class="content-header-container">
-      <div class="content-header" :style="{ background: getColor(song.yachtski) }">
+      <div class="content-header song-header" :style="{ background: getColor(song.yachtski) }">
         <div class="title">{{ song.title }}</div>
         <div class="subtitle">
           <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" />
@@ -9,20 +9,18 @@
           <span>{{ song.year }}</span>
         </div>
       </div>
+      <yachtski-container :yachtski="song.yachtski" :scores="song.scores" :yt="song.yt_id"/>
     </div>
     <div class="content-container">
       <nuxt-child v-on:updateSong="updateSong" :title="song.title" />
-      <yachtski-container :yachtski="song.yachtski" :scores="song.scores" />
-      <div class="content-section">
-        <div class="content-section-header">Listen</div>
-        <div class="content-section listen-links">
+      <!-- <div class="content-section">
+        <div class="content-section-header"><nuxt-link :to="{ path: `/episodes/${song.episode.id}/${urlString(song.episode.title)}` }">{{song.episode.title}}</nuxt-link></div>
+        <div class="content-section">
           <div class="podcast-player">
             <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="getColor(song.yachtski)" data-episode-id="94fb4fc2-5378-41e1-9836-04df553f8dc6"></div>
-            <nuxt-link :to="{ path: `/episodes/${song.episode.id}/${urlString(song.episode.title)}` }">{{song.episode.title}} Full Tracklist</nuxt-link>
           </div>
-          <iframe height="200" :src="`https://www.youtube.com/embed/${song.yt_id}?rel=0`" frameborder="0" allowfullscreen></iframe>
         </div>
-      </div>
+      </div> -->
       <div class="content-section" v-if="song.players.length > 0">
         <div class="content-section-header">Song Personnel</div>
         <player-list :players="song.players" />
@@ -83,9 +81,26 @@
 </script>
 
 <style>
+  .content-header.song-header {
+    margin-bottom: 0;
+    padding: 10px 20px 0;
+  }
+
   .listen-links {
     display: grid;
-    grid-template-columns: 575px 1fr;
+    grid-template-columns: 3fr 1fr;
     grid-gap: 20px;
+  }
+
+  @media (max-width: 425px) {
+    .content-header-container {
+      padding: 0;
+      margin-bottom: 40px;
+    }
+
+    .content-header.song-header {
+      margin-bottom: 0;
+      padding: 10px 10px 0;
+    }
   }
 </style>

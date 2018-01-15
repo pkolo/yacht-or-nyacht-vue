@@ -52,10 +52,13 @@
     text-decoration: none;
   }
 
+  .container {
+    margin: 0 auto;
+    max-width: 1023px;
+  }
+
   .content-header-container {
-    padding: 10px;
     color: #fff;
-    text-align: center;
   }
 
   .content-header-container a,
@@ -66,11 +69,11 @@
   }
 
   .content-header {
-    padding: 20px 10px;
+    padding: 20px 20px;
     margin-bottom: 40px;
   }
 
-  .content-header > .title {
+  .content-header .title {
     font-size: 50px;
   }
 
@@ -100,6 +103,35 @@
 
   .album-title {
     font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .content-header .title {
+      font-size: 36px;
+    }
+
+    .content-header > .subtitle {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .content-header {
+      text-align: center;
+    }
+
+    .content-header .title {
+      font-size: 28px;
+    }
+
+    .content-header > .subtitle {
+      font-size: 14px;
+    }
+
+    .subtitle > * + *:before{
+      content: " | ";
+      padding: 0 5px;
+    }
   }
 
 </style>

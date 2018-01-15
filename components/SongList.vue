@@ -1,5 +1,5 @@
 <template>
-  <div class="song-list-container">
+  <div class="song-list-container" :class="{ small: !showFilter }">
     <div class="widget-section" v-show="showFilter">
       <song-list-filter v-model="filterText"/>
       <song-list-slider v-model="value" />
@@ -11,11 +11,11 @@
         <span @click="songSort('title')">Title</span>
       </div>
       <span class="num" @click="songSort(altColumn.key)">{{ altColumn.header }}</span>
-      <span class="num" @click="songSort('scores.jd')">JD</span>
-      <span class="num" @click="songSort('scores.hunter')">Hunter</span>
-      <span class="num" @click="songSort('scores.steve')">Steve</span>
-      <span class="num" @click="songSort('scores.dave')">Dave</span>
-      <span class="num" @click="songSort('episode.number')">Ep #</span>
+      <span class="num hidden-sm" @click="songSort('scores.jd')">JD</span>
+      <span class="num hidden-sm" @click="songSort('scores.hunter')">Hunter</span>
+      <span class="num hidden-sm" @click="songSort('scores.steve')">Steve</span>
+      <span class="num hidden-sm" @click="songSort('scores.dave')">Dave</span>
+      <span class="num hidden-sm" @click="songSort('episode.number')">Ep #</span>
     </div>
     <div class="song-list">
       <div class="song" v-for="song in sortedSongs" v-show="songSwitch(song.title, song.artists, song.featured_artists, song.yachtski)" >
@@ -105,31 +105,31 @@
 </script>
 
 <style>
-  .song-list-container {
+  .small {
+    font-size: 13px;
   }
 
   .widget-section {
     width: 50%;
-    margin: 20px auto;
-    padding: 25px 0;
+    margin: 0 auto 20px;
+    padding: 15px 0 25px;
   }
 
   .song-list-header,
   .song-list-item {
     display: grid;
-    grid-template-columns: 1fr 7fr repeat(6, 1fr);
-    margin-bottom: 2px;
-  }
-
-  .song-list-header > *,
-  .song-list-item > * {
-    padding: 7px;
+    grid-template-columns: minmax(68px, 1fr) 7fr repeat(6, minmax(58px, 1fr));
+    margin-bottom: 1px;
   }
 
   .song-list-header {
     cursor: pointer;
     background: #ababab;
     color: #fff;
+  }
+
+  .song-list-header > * {
+    padding: 12px;
   }
 
   .song-list-header span:hover {
@@ -155,5 +155,32 @@
 
   .num {
     text-align: right;
+  }
+
+  .artist-song-title {
+    display: inline-block;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 768px) {
+    .song-list-header,
+    .song-list-item {
+      grid-template-columns: 1fr 7fr 1fr;
+    }
+
+    .hidden-sm {
+      display: none;
+    }
+
+    .widget-section {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .song-list-header,
+    .song-list-item {
+      font-size: 13px;
+    }
   }
 </style>

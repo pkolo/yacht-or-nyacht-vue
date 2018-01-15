@@ -18,6 +18,10 @@
 </script>
 
 <style>
+  .song-list-filter {
+    padding-bottom: 15px;
+  }
+
   .song-list-filter > input {
     width: 100%;
     height: 2em;
@@ -30,5 +34,14 @@
 
   .song-list-filter > input::-webkit-input-placeholder {
     color: #ababab;
+  }
+
+  @media (max-width: 768px) {
+    .song-list-filter > input {
+      width: 100%;
+      font-size: 1.25em;
+      color: #444;
+      padding: 10px;
+    }
   }
 </style>
