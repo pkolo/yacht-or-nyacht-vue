@@ -120,7 +120,7 @@
 
   @media (max-width: 425px) {
     .yachtski-container {
-      padding: 10px 0 0 0;
+      padding: 20px 0 0 0;
     }
 
     .yachtski-status {

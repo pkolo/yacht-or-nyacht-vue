@@ -116,8 +116,12 @@
   }
 
   @media (max-width: 425px) {
+    .content-header {
+      text-align: center;
+    }
+
     .content-header .title {
-      font-size: 24px;
+      font-size: 28px;
     }
 
     .content-header > .subtitle {
