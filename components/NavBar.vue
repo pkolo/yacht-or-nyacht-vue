@@ -59,4 +59,10 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  @media (max-width: 425px) {
+    nav {
+      padding: 0 5px;
+    }
+  }
 </style>
