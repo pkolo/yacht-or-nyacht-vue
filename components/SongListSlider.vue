@@ -75,6 +75,7 @@
     color: #fff;
     font-size: 11px;
     text-align: center;
+    cursor: pointer;
   }
 
   .filter-button.red {
