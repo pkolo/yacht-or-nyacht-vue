@@ -50,8 +50,14 @@
       grid-template-columns: 1fr;
     }
 
+    .player-links {
+      font-size: 14px;
+    }
+
     .player-roles {
-      margin-bottom: 5px;
+      margin: 0 0 5px 35px;
+      font-size: 12px;
+      text-align: left;
     }
   }
 
@@ -60,12 +66,8 @@
       grid-gap: 5px;
     }
 
-    .player-links {
-      font-size: 14px;
-    }
-
     .player-roles {
-      font-size: 12px;
+      margin: 0 0 5px 30px;
     }
   }
 </style>

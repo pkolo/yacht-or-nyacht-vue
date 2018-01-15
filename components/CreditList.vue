@@ -71,8 +71,14 @@
       grid-template-columns: 1fr;
     }
 
+    .credit-links {
+      font-size: 14px;
+    }
+
     .credit-roles {
-      margin-bottom: 5px;
+      margin: 0 0 5px 35px;
+      font-size: 12px;
+      text-align: left;
     }
   }
 
@@ -81,12 +87,8 @@
       grid-gap: 5px;
     }
 
-    .credit-links {
-      font-size: 14px;
-    }
-
     .credit-roles {
-      font-size: 12px;
+      margin: 0 0 5px 30px;
     }
   }
 
