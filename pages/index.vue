@@ -3,7 +3,21 @@
     <div class="modal" v-show="showModal" @click="hideModal">
       <div class="modal-content">
         <h3><span class="site-name">Yacht or Nyacht?</span></h3>
-        <p>Content here...</p>
+        <p>
+          Welcome! If you've ever wondered whether a particular song qualifies as Yacht Rock, you're in the right place! Yacht or Nyacht is a
+          collection of songs rated on the Yachtski Scale, a scientific measurement of musical yacht-ness created by the
+          <a href="http://www.yachtrock.com" target="_blank">originators of the term 'Yacht Rock'</a> (JD, Hunter, Steve, and Dave).
+        </p>
+
+        <p>
+          Please note that while the Yachstki Scale is a continuum, 'Yacht Rock' is a binary.
+          <span style="color: rgb(231, 128, 114)">Only songs rated 50 and above qualify as Yacht Rock - below 50 are NOT Yacht Rock,
+           aka "Nyacht Rock."</span>
+        </p>
+
+        <p>
+          Have a great day!
+        </p>
       </div>
     </div>
     <div class="content-container">
@@ -50,24 +64,26 @@ export default {
 
   .modal {
       position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
+      z-index: 4; /* Sit on top */
       left: 0;
       top: 0;
       width: 100%; /* Full width */
       height: 100%; /* Full height */
       overflow: auto; /* Enable scroll if needed */
       background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
   }
 
   /* Modal Content/Box */
   .modal-content {
-      background-color: #fefefe;
-      margin: 15% auto; /* 15% from the top and centered */
-      padding: 20px;
-      border: 1px solid #888;
-      width: 500px; /* Could be more or less, depending on screen size */
-      text-align: center;
+    z-index: 5;
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 40px;
+    border: 1px solid #888;
+    width: 500px;
+    font-size: 14px;
+    text-align: center;
   }
 
   .modal-content > * {
@@ -75,7 +91,23 @@ export default {
   }
 
   .modal-content > p {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: justify;
+  }
+
+  @media (max-width: 768px) {
+    .modal-content {
+      margin: 5% auto;
+      width: 350px;
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .modal-content {
+      margin: 5% auto;
+      width: 95%;
+      padding: 20px;
+    }
   }
 </style>

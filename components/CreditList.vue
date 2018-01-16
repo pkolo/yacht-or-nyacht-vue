@@ -43,6 +43,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 5px;
+    padding-bottom: 5px;
     border-bottom: 1px solid #dedede;
   }
 
@@ -76,7 +77,7 @@
     }
 
     .credit-roles {
-      margin: 0 0 5px 35px;
+      margin: 0 0 0 35px;
       font-size: 12px;
       text-align: left;
     }

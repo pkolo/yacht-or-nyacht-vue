@@ -1,6 +1,6 @@
 <template>
   <div class="song-list-filter">
-    <input placeholder="Filter by artist or title..." ref="input" :value="value" v-on:input="updateFilter($event.target.value)"/>
+    <input placeholder="Search by artist or title..." ref="input" :value="value" v-on:input="updateFilter($event.target.value)"/>
   </div>
 </template>
 
@@ -39,7 +39,7 @@
   @media (max-width: 768px) {
     .song-list-filter > input {
       width: 100%;
-      font-size: 1.25em;
+      font-size: 1.15em;
       color: #444;
       padding: 10px;
     }
