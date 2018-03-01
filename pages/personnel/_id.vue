@@ -6,7 +6,7 @@
           {{ personnel.name }}
         </div>
         <div class="subtitle">
-          <span>{{ personnel.song_credits.length }} credits</span>
+          <span>{{ combineRoles(personnel.frequent_roles).join(', ') }}</span>
           <span>{{ personnel.yachtski | roundNum }} Average Yachtski Score</span>
         </div>
       </div>
@@ -24,6 +24,7 @@
 
 <script>
   import axios from '~/plugins/axios'
+  import { uniq } from 'lodash'
 
   import { utilities } from '../../mixins/utilities'
 
@@ -46,6 +47,11 @@
     components: {
       SongList,
       CreditList
+    },
+    methods: {
+      combineRoles: function (roles) {
+        return uniq(roles)
+      }
     },
     filters: {
       roundNum: function (number) {
