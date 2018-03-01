@@ -34,7 +34,7 @@ import SongList from '../components/SongList'
 export default {
   data () {
     return {
-      showModal: true
+      showModal: false
     }
   },
   asyncData () {
@@ -42,6 +42,18 @@ export default {
       .then((res) => {
         return { songs: res.data }
       })
+  },
+  mounted () {
+    if (process.browser) {
+      if (window.localStorage.getItem('yonModal')) {
+        this.hideModal()
+      } else {
+        let expireDate = new Date()
+        expireDate.setDate(expireDate.getDate() + 14)
+        window.localStorage.setItem('yonModal', expireDate)
+        this.showModal = true
+      }
+    }
   },
   head: {
     title: 'Home'

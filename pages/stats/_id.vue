@@ -6,10 +6,9 @@
           Yacht or Nyacht Stats
         </div>
         <div class="subtitle">
-          <nuxt-link :to="{ path: `/stats/jd`}">JD Ryznar</nuxt-link>
-          <nuxt-link :to="{ path: `/stats/hunter`}">Hunter Stair</nuxt-link>
-          <nuxt-link :to="{ path: `/stats/steve`}">Steve Huey</nuxt-link>
-          <nuxt-link :to="{ path: `/stats/dave`}">Dave Lyons</nuxt-link>
+          <span v-for="host in hosts">
+            <nuxt-link :to="{ path: `/stats/${host}`}">{{ host | fullName }}</nuxt-link>
+          </span>
         </div>
       </div>
     </div>
@@ -133,7 +132,8 @@
         .then((res) => {
           return {
             hostName: params.id,
-            stats: res.data
+            stats: res.data,
+            hosts: ['jd', 'hunter', 'steve', 'dave']
           }
         })
     },
