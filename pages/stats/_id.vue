@@ -6,10 +6,9 @@
           Yacht or Nyacht Stats
         </div>
         <div class="subtitle">
-          <span>JD Ryznar</span>
-          <span>Hunter Stair</span>
-          <span>Steve Huey</span>
-          <span>Dave Lyons</span>
+          <span v-for="host in hosts">
+            <nuxt-link :to="{ path: `/stats/${host}`}">{{ host | fullName }}</nuxt-link>
+          </span>
         </div>
       </div>
     </div>
@@ -48,7 +47,73 @@
         </div>
       </div>
 
-      {{ stats }}
+      <div class="content-section">
+        <div class="content-section-header">
+          Largest 'Nyacht' Dissents
+        </div>
+
+        <div class="stat-bar" v-for="(song, index) in stats.dissents.nyacht">
+          <stat-bar
+            :index="index"
+            :host="hostName"
+            :otherHost="`Others`"
+            :hostStat="song.scores[hostName]"
+            :otherHostStat="song.scores[hostName] - song.dissent"
+            :song="song"
+          />
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="content-section-header">
+          Largest 'Yacht' Disagreements
+        </div>
+
+        <div class="stat-bar" v-for="(song, index) in stats.disagreements">
+          <stat-bar
+            :index="0"
+            :host="hostName"
+            :otherHost="song.other_host"
+            :hostStat="song.yacht.scores[hostName]"
+            :otherHostStat="song.yacht.scores[hostName] - song.yacht.disagreement"
+            :song="song.yacht"
+          />
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="content-section-header">
+          Largest 'Nyacht' Disagreements
+        </div>
+
+        <div class="stat-bar" v-for="(song, index) in stats.disagreements">
+          <stat-bar
+            :index="0"
+            :host="hostName"
+            :otherHost="song.other_host"
+            :hostStat="song.nyacht.scores[hostName]"
+            :otherHostStat="song.nyacht.scores[hostName] + song.nyacht.disagreement"
+            :song="song.nyacht"
+          />
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="content-section-header">
+          Weird Essentials
+        </div>
+
+        <div class="stat-bar" v-for="(song, index) in stats.weird_essentials">
+          <stat-bar
+            :index="index"
+            :host="hostName"
+            :otherHost="`Yachstki`"
+            :hostStat="song.scores[hostName]"
+            :otherHostStat="song.yachtski"
+            :song="song"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -67,7 +132,8 @@
         .then((res) => {
           return {
             hostName: params.id,
-            stats: res.data
+            stats: res.data,
+            hosts: ['jd', 'hunter', 'steve', 'dave']
           }
         })
     },

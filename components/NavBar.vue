@@ -19,6 +19,10 @@
             url: 'http://www.feralaudio.com/show/beyond-yacht-rock/'
           },
           {
+            title: 'Yacht Or Nyacht Stats',
+            url: '/stats/jd'
+          },
+          {
             title: 'Yacht Rock Official',
             url: 'http://www.yachtrock.com/'
           },
@@ -29,16 +33,6 @@
           {
             title: 'YR Spotify Playlist',
             url: 'https://open.spotify.com/user/jdryznar/playlist/6kVRZHsbV6LZEBiqzSzFvq'
-          }
-        ],
-        yonLinks: [
-          {
-            title: 'Host Stats',
-            url: '#'
-          },
-          {
-            title: 'Fun Facts',
-            url: '#'
           }
         ]
       }
