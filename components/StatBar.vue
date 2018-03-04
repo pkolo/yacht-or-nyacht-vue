@@ -2,7 +2,7 @@
   <div class="stat-bar-section">
     <div class="stat-bar-header" v-if="index === 0">
       <div class="host-name">
-        {{ host | name }}
+        {{ host }}
       </div>
 
       <div>
@@ -10,7 +10,7 @@
       </div>
 
       <div class="other-name">
-        {{ otherHost | name }}
+        {{ otherHost }}
       </div>
     </div>
 
@@ -51,19 +51,6 @@
       ArtistLinks
     },
     filters: {
-      name: function (name) {
-        if (name === 'jd') {
-          return 'JD'
-        } else if (name === 'hunter') {
-          return 'Hunter'
-        } else if (name === 'steve') {
-          return 'Steve'
-        } else if (name === 'dave') {
-          return 'Dave'
-        } else {
-          return name
-        }
-      },
       roundNum: function (number) {
         return Math.round(number * 100) / 100
       }

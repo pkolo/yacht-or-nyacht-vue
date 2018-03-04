@@ -6,8 +6,8 @@
           Yacht or Nyacht Stats
         </div>
         <div class="subtitle">
-          <span v-for="host in hosts">
-            <nuxt-link :to="{ path: `/stats/${host}`}">{{ host | fullName }}</nuxt-link>
+          <span v-for="host in stats.all_hosts">
+            <nuxt-link :to="{ path: `/stats/${host.slug}`}">{{ host.full_name }}</nuxt-link>
           </span>
         </div>
       </div>
@@ -16,7 +16,7 @@
     <div class="content-container">
       <div class="host-stat-header">
         <div class="host-name">
-          {{ hostName | fullName }}
+          {{ stats.host.full_name }}
         </div>
 
         <div class="score-breakdown">
@@ -38,10 +38,10 @@
         <div class="stat-bar" v-for="(song, index) in stats.dissents.yacht">
           <stat-bar
             :index="index"
-            :host="hostName"
+            :host="stats.host.full_name"
             :otherHost="`Others`"
-            :hostStat="song.scores[hostName]"
-            :otherHostStat="song.scores[hostName] - song.dissent"
+            :hostStat="song.scores[stats.host.slug]"
+            :otherHostStat="song.scores[stats.host.slug] - song.dissent"
             :song="song"
           />
         </div>
@@ -55,10 +55,10 @@
         <div class="stat-bar" v-for="(song, index) in stats.dissents.nyacht.reverse()">
           <stat-bar
             :index="index"
-            :host="hostName"
+            :host="stats.host.full_name"
             :otherHost="`Others`"
-            :hostStat="song.scores[hostName]"
-            :otherHostStat="song.scores[hostName] - song.dissent"
+            :hostStat="song.scores[stats.host.slug]"
+            :otherHostStat="song.scores[stats.host.slug] - song.dissent"
             :song="song"
           />
         </div>
@@ -72,10 +72,10 @@
         <div class="stat-bar" v-for="(song, index) in stats.disagreements">
           <stat-bar
             :index="0"
-            :host="hostName"
-            :otherHost="song.other_host"
-            :hostStat="song.yacht.scores[hostName]"
-            :otherHostStat="song.yacht.scores[song.other_host]"
+            :host="stats.host.full_name"
+            :otherHost="song.other_host.full_name"
+            :hostStat="song.yacht.scores[stats.host.slug]"
+            :otherHostStat="song.yacht.scores[song.other_host.slug]"
             :song="song.yacht"
           />
         </div>
@@ -89,10 +89,10 @@
         <div class="stat-bar" v-for="(song, index) in stats.disagreements">
           <stat-bar
             :index="0"
-            :host="hostName"
-            :otherHost="song.other_host"
-            :hostStat="song.nyacht.scores[hostName]"
-            :otherHostStat="song.nyacht.scores[song.other_host]"
+            :host="stats.host.full_name"
+            :otherHost="song.other_host.full_name"
+            :hostStat="song.nyacht.scores[stats.host.slug]"
+            :otherHostStat="song.nyacht.scores[song.other_host.slug]"
             :song="song.nyacht"
           />
         </div>
@@ -106,9 +106,9 @@
         <div class="stat-bar" v-for="(song, index) in stats.weird_essentials">
           <stat-bar
             :index="index"
-            :host="hostName"
+            :host="stats.host.full_name"
             :otherHost="`Yachtski`"
-            :hostStat="song.scores[hostName]"
+            :hostStat="song.scores[stats.host.slug]"
             :otherHostStat="song.yachtski"
             :song="song"
           />
@@ -131,9 +131,7 @@
       return axios.get(`/stats/${id}`)
         .then((res) => {
           return {
-            hostName: params.id,
-            stats: res.data,
-            hosts: ['jd', 'hunter', 'steve', 'dave']
+            stats: res.data
           }
         })
     },
@@ -148,17 +146,6 @@
     filters: {
       roundNum: function (number) {
         return Math.round(number * 1000) / 1000
-      },
-      fullName: function (name) {
-        if (name === 'jd') {
-          return 'JD Ryznar'
-        } else if (name === 'hunter') {
-          return 'Hunter Stair'
-        } else if (name === 'steve') {
-          return 'Steve Huey'
-        } else if (name === 'dave') {
-          return 'Dave Lyons'
-        }
       }
     },
     mixins: [utilities]
