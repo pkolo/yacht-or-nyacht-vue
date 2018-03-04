@@ -52,7 +52,7 @@
           Largest 'Nyacht' Dissents
         </div>
 
-        <div class="stat-bar" v-for="(song, index) in stats.dissents.nyacht.reverse()">
+        <div class="stat-bar" v-for="(song, index) in stats.dissents.nyacht">
           <stat-bar
             :index="index"
             :host="stats.host.full_name"
