@@ -113,6 +113,10 @@
     .content-header > .subtitle {
       font-size: 16px;
     }
+
+    .content-container {
+      padding: 0 5px;
+    }
   }
 
   @media (max-width: 425px) {
