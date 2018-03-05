@@ -7,7 +7,8 @@
         </div>
         <div class="subtitle">
           <span>{{ combineRoles(personnel.frequent_roles).join(', ') }}</span>
-          <span>{{ personnel.yachtski | roundNum }} Average Yachtski Score</span>
+          <span v-if="personnel.yachtski >= 0">{{ personnel.yachtski | roundNum }} Average Yachtski</span>
+          <span v-if="personnel.yachtski < 0">N/A Average Yachtski</span>
         </div>
       </div>
     </div>
