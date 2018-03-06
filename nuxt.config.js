@@ -28,6 +28,12 @@ module.exports = {
   plugins: [
     { src: '~plugins/vue-slider-component.js', ssr: false }
   ],
+  modules: [
+    // Simple usage
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-100779074-1'
+    }]
+  ],
   build: {
     /*
     ** Run ESLint on save
