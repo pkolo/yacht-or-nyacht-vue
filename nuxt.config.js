@@ -9,13 +9,9 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'The foremost authority on whether or not a given song is Yacht Rock... or Nyacht.' }
     ],
-    script: [
-      { src: 'https://web-player.art19.com/assets/current.js' }
-    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:700|Shrikhand' },
-      { rel: 'stylesheet', href: 'https://web-player.art19.com/assets/current.css'}
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:700|Shrikhand' }
     ]
   },
   /*
@@ -27,12 +23,6 @@ module.exports = {
   */
   plugins: [
     { src: '~plugins/vue-slider-component.js', ssr: false }
-  ],
-  modules: [
-    // Simple usage
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-100779074-1'
-    }]
   ],
   build: {
     /*

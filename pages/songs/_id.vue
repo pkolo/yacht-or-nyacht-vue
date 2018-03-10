@@ -13,14 +13,14 @@
     </div>
     <div class="content-container">
       <nuxt-child v-on:updateSong="updateSong" :title="song.title" />
-      <!-- <div class="content-section">
+      <div class="content-section">
         <div class="content-section-header"><nuxt-link :to="{ path: `/episodes/${song.episode.id}/${urlString(song.episode.title)}` }">{{song.episode.title}}</nuxt-link></div>
         <div class="content-section">
           <div class="podcast-player">
             <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="getColor(song.yachtski)" data-episode-id="94fb4fc2-5378-41e1-9836-04df553f8dc6"></div>
           </div>
         </div>
-      </div> -->
+      </div>
       <div class="content-section" v-if="song.players.length > 0">
         <div class="content-section-header">Song Personnel</div>
         <player-list :players="song.players" />
@@ -52,7 +52,13 @@
     },
     head () {
       return {
-        title: this.song.title
+        title: this.song.title,
+        script: [
+          { src: 'https://web-player.art19.com/assets/current.js' }
+        ],
+        link: [
+          { rel: 'stylesheet', href: 'https://web-player.art19.com/assets/current.css' }
+        ]
       }
     },
     components: {
