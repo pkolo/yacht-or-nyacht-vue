@@ -7,7 +7,7 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'The formost authority on whether or not a given song is Yacht Rock... or Nyacht.' }
+      { hid: 'description', name: 'description', content: 'The foremost authority on whether or not a given song is Yacht Rock... or Nyacht.' }
     ],
     script: [
       { src: 'https://web-player.art19.com/assets/current.js' }
