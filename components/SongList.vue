@@ -15,7 +15,7 @@
       <span class="num hidden-sm" @click="songSort('scores.hunter')">Hunter</span>
       <span class="num hidden-sm" @click="songSort('scores.steve')">Steve</span>
       <span class="num hidden-sm" @click="songSort('scores.dave')">Dave</span>
-      <span class="num hidden-sm" @click="songSort('episode.number')">Ep #</span>
+      <span class="num hidden-sm" @click="songSort('episodes[0].air_date')">Ep #</span>
     </div>
     <div class="song-list">
       <div class="song" v-for="song in sortedSongs" v-show="songSwitch(song.title, song.artists, song.featured_artists, song.yachtski)" >

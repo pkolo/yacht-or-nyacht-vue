@@ -2,15 +2,26 @@
   <div class="container">
     <div class="content-header-container">
       <div class="content-header">
-        <div class="title">
-          {{ episode.title }}
-        </div>
+        <div class="title">{{ episode.show_title }}</div>
+
+        <div class="subtitle" v-if="episode.title">{{episode.title}}</div>
       </div>
     </div>
+
     <nuxt-child v-on:submitSong="pushSong" :title="episode.title" />
+
+    <div class="content-container">
+      <div class="content-section">
+        <div class="content-section-header">Episode Player</div>
+
+        <episode-player color="#ababab" :episode="episode" />
+      </div>
+    </div>
+
     <div class="content-container">
       <div class="content-section">
         <div class="content-section-header">Episode Tracklist</div>
+
         <song-list v-bind:showFilter="false" :songs="episode.songs" />
       </div>
     </div>
@@ -23,6 +34,7 @@
   import { utilities } from '../../mixins/utilities'
 
   import SongList from '../../components/SongList'
+  import EpisodePlayer from '../../components/EpisodePlayer'
 
   export default {
     asyncData ({ params }) {
@@ -34,7 +46,13 @@
     },
     head () {
       return {
-        title: this.episode.title
+        title: this.episode.show_title,
+        script: [
+          { src: 'https://web-player.art19.com/assets/current.js' }
+        ],
+        link: [
+          { rel: 'stylesheet', href: 'https://web-player.art19.com/assets/current.css' }
+        ]
       }
     },
     methods: {
@@ -43,7 +61,8 @@
       }
     },
     components: {
-      SongList
+      SongList,
+      EpisodePlayer
     },
     mixins: [utilities]
   }

@@ -3,30 +3,34 @@
     <div class="content-header-container">
       <div class="content-header song-header" :style="{ background: getColor(song.yachtski) }">
         <div class="title">{{ song.title }}</div>
+
         <div class="subtitle">
           <artist-links :artists="song.artists" :featuredArtists="song.featured_artists" />
           <span v-if="song.album"><nuxt-link class="album-title" :to="{ path: `/albums/${song.album.id}/${urlString(song.album.title)}` }">{{ song.album.title }}</nuxt-link></span>
           <span>{{ song.year }}</span>
         </div>
       </div>
+
       <yachtski-container :yachtski="song.yachtski" :scores="song.scores" :yt="song.yt_id"/>
     </div>
+
     <div class="content-container">
       <nuxt-child v-on:updateSong="updateSong" :title="song.title" />
-      <!-- <div class="content-section">
-        <div class="content-section-header"><nuxt-link :to="{ path: `/episodes/${song.episode.id}/${urlString(song.episode.title)}` }">{{song.episode.title}}</nuxt-link></div>
-        <div class="content-section">
-          <div class="podcast-player">
-            <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="getColor(song.yachtski)" data-episode-id="94fb4fc2-5378-41e1-9836-04df553f8dc6"></div>
-          </div>
-        </div>
-      </div> -->
+      <div class="content-section" ng-if="song.episodes.data_id.length > 0">
+        <div class="content-section-header"><nuxt-link :to="{ path: `/episodes/${song.episodes[0].id}/${urlString(song.episodes[0].show_title)}` }">{{song.episodes[0].show_title}}</nuxt-link></div>
+
+        <episode-player :color="getColor(song.yachtski)" :episode="song.episodes[0]" />
+      </div>
+
       <div class="content-section" v-if="song.players.length > 0">
         <div class="content-section-header">Song Personnel</div>
+
         <player-list :players="song.players" />
       </div>
+
       <div class="content-section" v-if="song.album && song.album.players.length > 0">
         <div class="content-section-header">Album Personnel</div>
+        
         <player-list :players="song.album.players" />
       </div>
     </div>
@@ -41,6 +45,7 @@
   import ArtistLinks from '../../components/ArtistLinks'
   import YachtskiContainer from '../../components/YachtskiContainer'
   import PlayerList from '../../components/PlayerList'
+  import EpisodePlayer from '../../components/EpisodePlayer'
 
   export default {
     asyncData ({ params }) {
@@ -52,13 +57,20 @@
     },
     head () {
       return {
-        title: this.song.title
+        title: this.song.title,
+        script: [
+          { src: 'https://web-player.art19.com/assets/current.js' }
+        ],
+        link: [
+          { rel: 'stylesheet', href: 'https://web-player.art19.com/assets/current.css' }
+        ]
       }
     },
     components: {
       ArtistLinks,
       YachtskiContainer,
-      PlayerList
+      PlayerList,
+      EpisodePlayer
     },
     methods: {
       updateSong (newSong) {

@@ -10,7 +10,7 @@
     <div class="num white hidden-sm" :style="{ backgroundColor: getColor(song.scores.hunter) }">{{ song.scores.hunter }}</div>
     <div class="num white hidden-sm" :style="{ backgroundColor: getColor(song.scores.steve) }">{{ song.scores.steve }}</div>
     <div class="num white hidden-sm" :style="{ backgroundColor: getColor(song.scores.dave) }">{{ song.scores.dave }}</div>
-    <div class="num hidden-sm"><nuxt-link :to="{ path: `${song.episode.resource_url}/${urlString(song.episode.title)}`}">{{ song.episode.number }}</nuxt-link></div>
+    <div class="num hidden-sm"><nuxt-link :to="{ path: `${song.episodes[0].resource_url}/${urlString(song.episodes[0].show_title)}`}">{{ song.episodes[0].number }}</nuxt-link></div>
   </div>
 </template>
 
