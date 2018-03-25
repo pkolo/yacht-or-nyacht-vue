@@ -17,7 +17,6 @@
     "@nuxtjs/google-analytics": "^2.0.2",
     "axios": "^0.17.0",
     "caniuse-lite": "^1.0.30000697",
-    "express-nobots": "^1.0.4",
     "lodash": "^4.17.4",
     "nuxt": "^1.0.0-rc11",
     "vue-no-ssr": "^0.2.1",

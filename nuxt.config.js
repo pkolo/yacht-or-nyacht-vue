@@ -50,7 +50,7 @@ module.exports = {
     baseUrl: process.env.BASE_URL || 'http://yacht-or-nyacht-api.herokuapp.com/api/v1'
   },
   router: {
-    serverMiddleware: 'express-nobots',
+    middleware: 'nobot',
     extendRoutes (routes, resolve) {
       routes.push(...[
         {
