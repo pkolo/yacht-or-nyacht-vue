@@ -10,7 +10,7 @@
 
     <nuxt-child v-on:submitSong="pushSong" :title="episode.title" />
 
-    <div class="content-container">
+    <div class="content-container" v-if="episode.data_id">
       <div class="content-section">
         <div class="content-section-header">Episode Player</div>
 
