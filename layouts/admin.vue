@@ -81,6 +81,12 @@
     max-width: 1023px;
   }
 
+  .content-header {
+    margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
   /* .content-header-container {
     color: #fff;
   }
