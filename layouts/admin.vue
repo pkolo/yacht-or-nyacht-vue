@@ -50,12 +50,17 @@
   .dash-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-gap: 40px;
+    grid-gap: 20px;
   }
 
   .admin-content-container {
     padding: 40px;
     border: 1px solid slategrey;
+  }
+
+  .admin-content-header {
+    font-size: 36px;
+    margin-bottom: 40px;
   }
 
   /* a, a:visited, a:active {

@@ -51,7 +51,7 @@
           })
           .then(res => {
             if (this.errors.length === 0) {
-              this.$router.push('/')
+              this.$router.push('/admin')
             }
           })
       },
