@@ -2,6 +2,16 @@
   <div class="sidebar-container">
     <div class="sidebar-section">
       <div class="header">
+        Welcome
+      </div>
+
+      <div class="content">
+        <a href="" @click="logOut">logout</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="header">
         Episodes
       </div>
 
@@ -12,6 +22,18 @@
   </div>
 </template>
 
+<script>
+  export default {
+    methods: {
+      logOut () {
+        this.$store.dispatch('auth/reset').then(() => {
+          this.$router.push('/')
+        })
+      }
+    }
+  }
+</script>
+
 <style>
   .sidebar-container {
     padding: 20px;
@@ -20,7 +42,7 @@
   }
 
   .sidebar-section {
-    margin-bottom: 25px;
+    margin-bottom: 40px;
   }
 
   .sidebar-section .header {

@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <form @submit.prevent="login" class="login-form left">
+    <form @submit.prevent="submit" class="login-form left">
       <div>
         <p>Username</p>
         <input type="text" placeholder="username" v-model="formData.name" />
@@ -24,8 +24,6 @@
 </template>
 
 <script>
-  import axios from '~/plugins/axios'
-
   export default {
     data () {
       return {
@@ -42,16 +40,13 @@
       }
     },
     methods: {
-      login () {
-        this.errors = []
-        axios.post(`/login`, this.formData)
-          .then(res => window.localStorage.setItem('yonToken', res.data.token))
-          .catch(error => {
-            this.errors = error.response.data.errors
-          })
-          .then(res => {
-            if (this.errors.length === 0) {
-              this.$router.push('/admin')
+      submit () {
+        this.$store.dispatch('auth/login', this.formData)
+          .then(result => {
+            this.$router.push('/admin')
+          }).catch(error => {
+            if (error.response && error.response.data) {
+              this.errors = error.response.data.errors
             }
           })
       },
