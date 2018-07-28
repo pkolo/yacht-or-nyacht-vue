@@ -8,8 +8,6 @@
       </div>
     </div>
 
-    <nuxt-child v-on:submitSong="pushSong" :title="episode.title" />
-
     <div class="content-container" v-if="episode.data_id">
       <div class="content-section">
         <div class="content-section-header">Episode Player</div>
@@ -53,11 +51,6 @@
         link: [
           { rel: 'stylesheet', href: 'https://web-player.art19.com/assets/current.css' }
         ]
-      }
-    },
-    methods: {
-      pushSong (newSong) {
-        this.episode.songs.push(newSong)
       }
     },
     components: {
