@@ -16,7 +16,13 @@
       </div>
 
       <div class="content">
-        <div>+ new episode</div>
+        <div>
+          <a href="/admin/episodes">All Episodes</a>
+        </div>
+
+        <div>
+          <a href="/admin/episodes/new">New Episode</a>
+        </div>
       </div>
     </div>
   </div>

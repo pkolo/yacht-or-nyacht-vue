@@ -58,6 +58,10 @@
     border: 1px solid slategrey;
   }
 
+  .admin-container > * {
+    margin-bottom: 30px;
+  }
+
   .admin-content-header {
     font-size: 36px;
     margin-bottom: 40px;
@@ -90,6 +94,64 @@
     margin-bottom: 40px;
     font-size: 24px;
     font-weight: 600;
+  }
+
+  .admin-form {
+    padding: 20px;
+    border: 1px solid #444;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  input {
+    display: block;
+    width: 600px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  textarea {
+    padding: 10px;
+    width: 600px;
+    font-size: 14px;
+  }
+
+  .bottom-group {
+    display: grid;
+    grid-template-columns: 420px 180px;
+  }
+
+  .scores-group {
+    display: grid;
+    grid-template-columns: 200px 200px;
+  }
+
+  .scores-group input {
+    width: 190px;
+  }
+
+  .submit-group {
+    text-align: center;
+  }
+
+  .submit-group .yachtski-score {
+    padding: 30px;
+    font-size: 48px;
+  }
+
+  .form-group {
+    padding: 10px;
+  }
+
+  .form-input {
+    display: grid;
+    margin-bottom: 10px;
+    grid-template-columns: 1fr 4fr;
   }
 
   /* .content-header-container {
