@@ -24,7 +24,7 @@
           Episode Number
         </label>
 
-        <input type="text" v-model="formData.number" placeholder="Episode Number" />
+        <input type="text" v-model="formData.episode_no" placeholder="Episode Number" />
       </div>
 
       <div class="form-group">
@@ -72,7 +72,6 @@
     data () {
       return {
         formData: {
-          number: '',
           notes: '',
           link: ''
         },
@@ -82,7 +81,6 @@
     asyncData () {
       return axios.get(`/shows`)
         .then((res) => {
-          console.log(res)
           return {
             shows: res.data
           }
@@ -106,9 +104,10 @@
             this.errors = error.response.data.errors
           })
           .then(res => {
-            let episodeUrl = res.data.url
+            let episodeUrl = res.data.resource_url
+            console.log(res.data)
             if (this.errors.length === 0) {
-              this.$router.push(`${episodeUrl}`)
+              this.$router.push(`/admin${episodeUrl}`)
             }
           })
       }
