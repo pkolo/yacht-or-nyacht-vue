@@ -59,7 +59,15 @@
 
         <div class="form-group">
           <label>Artist</label>
-          <input type="text" v-model="song.artist"/>
+          <input type="text" v-model="searchQ" @input="personnelSearch()"/>
+
+          <div v-if="results.length > 0" class="typeahead-container">
+            <div class="typeahead-content">
+              <div class="typeahead-result" v-for="result in results" @click="setArtist(result)">
+                <span>{{result.name}}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
@@ -141,20 +149,48 @@
           hunter_score: 0,
           steve_score: 0,
           dave_score: 0,
-          artist: ''
+          artist: {
+            name: '',
+            id: null
+          }
         },
         errors: [],
-        showForm: false
+        showForm: false,
+        searchQ: '',
+        results: []
       }
     },
     props: {
       title: String
     },
     methods: {
+      personnelSearch () {
+        this.results = []
+
+        axios({
+          method: 'get',
+          url: `/personnel/search?q=${this.searchQ}`
+        })
+          .then(res => {
+            this.results = res.data
+          })
+      },
+      setArtist (result) {
+        this.song.artist.name = result.name
+        this.song.artist.discog_id = result.discog_id
+
+        this.searchQ = this.song.artist.name
+        this.results = []
+      },
       addSong () {
         this.errors = []
-        let credits = [{role: 'Temp Artist', personnel_attributes: {name: this.song.artist}}]
-        this.song['credits_attributes'] = credits
+        let artist = this.song.artist.discog_id ? this.song.artist : { name: this.searchQ }
+
+        this.song['credits_attributes'] = [{
+          role: 'Temp Artist',
+          personnel_attributes: artist
+        }]
+
         let formData = {'song': this.song}
         axios({
           method: 'post',
@@ -230,5 +266,30 @@
 <style>
   .edit-episode-container > * {
     margin-bottom: 30px;
+  }
+
+  .typeahead-container {
+    position: relative;
+  }
+
+  .typeahead-content {
+    position: absolute;
+    width: 320px;
+    z-index: 1;
+    background: #fff;
+    border: 1px solid #444;
+    font-size: 13px;
+    max-height: 240px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .typeahead-result {
+    padding: 10px;
+  }
+
+  .typeahead-result:hover {
+    background: #ffe;
+    cursor: pointer;
   }
 </style>
