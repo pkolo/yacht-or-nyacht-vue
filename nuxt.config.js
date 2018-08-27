@@ -22,7 +22,8 @@ module.exports = {
   ** Build configuration
   */
   plugins: [
-    { src: '~plugins/vue-slider-component.js', ssr: false }
+    { src: '~plugins/vue-slider-component.js', ssr: false },
+    '~/api/init.js'
   ],
   modules: [
     // Simple usage
@@ -50,6 +51,7 @@ module.exports = {
     baseUrl: process.env.BASE_URL || 'http://yacht-or-nyacht-api.herokuapp.com/api/v1'
   },
   router: {
+    middleware: ['auth'],
     extendRoutes (routes, resolve) {
       routes.push(...[
         {

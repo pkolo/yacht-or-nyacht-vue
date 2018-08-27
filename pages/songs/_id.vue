@@ -16,10 +16,14 @@
 
     <div class="content-container">
       <nuxt-child v-on:updateSong="updateSong" :title="song.title" />
-      <div class="content-section" ng-if="song.episodes.data_id.length > 0">
-        <div class="content-section-header"><nuxt-link :to="{ path: `/episodes/${song.episodes[0].id}/${urlString(song.episodes[0].show_title)}` }">{{song.episodes[0].show_title}}</nuxt-link></div>
+      <div class="content-section" v-if="song.episodes[0].data_id">
+        <div class="content-section-header">
+          <nuxt-link :to="{ path: `/episodes/${song.episodes[0].id}/${urlString(song.episodes[0].show_title)}` }">
+            {{song.episodes[0].show_title}}
+          </nuxt-link>
+        </div>
 
-        <episode-player :color="getColor(song.yachtski)" :episode="song.episodes[0]" />
+        <episode-player :color="getColor(song.yachtski)" :episode="song.episodes[0]"/>
       </div>
 
       <div class="content-section" v-if="song.players.length > 0">
@@ -30,7 +34,7 @@
 
       <div class="content-section" v-if="song.album && song.album.players.length > 0">
         <div class="content-section-header">Album Personnel</div>
-        
+
         <player-list :players="song.album.players" />
       </div>
     </div>
