@@ -58,4 +58,8 @@
   .white {
     color: #fff;
   }
+
+  .white.missing {
+    color: #744;
+  }
 </style>

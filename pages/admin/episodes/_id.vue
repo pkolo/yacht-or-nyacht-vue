@@ -63,8 +63,12 @@
 
           <div v-if="results.length > 0" class="typeahead-container">
             <div class="typeahead-content">
-              <div class="typeahead-result" v-for="result in results" @click="setArtist(result)">
-                <span>{{result.name}}</span>
+              <div class="typeahead-result" v-on:click="setArtistFromQ()">
+                <span>{{this.searchQ}}</span>
+              </div>
+
+              <div class="typeahead-result" v-for="result in results" v-on:click="setArtist(result)">
+                <span>{{result.name}} ({{result.id}})</span>
               </div>
             </div>
           </div>
@@ -178,6 +182,15 @@
       setArtist (result) {
         this.song.artist.name = result.name
         this.song.artist.discog_id = result.discog_id
+        this.song.artist.id = result.id
+
+        this.searchQ = this.song.artist.name
+        this.results = []
+      },
+      setArtistFromQ () {
+        this.song.artist.name = this.searchQ
+        this.song.artist.id = null
+        this.song.artist.discog_id = null
 
         this.searchQ = this.song.artist.name
         this.results = []
@@ -219,8 +232,13 @@
         this.song.hunter_score = 0
         this.song.steve_score = 0
         this.song.dave_score = 0
-        this.song.artist = ''
+        this.song.artist = {
+          name: '',
+          id: null
+        }
         this.showForm = false
+        this.searchQ = ''
+        this.results = []
       },
       toggleForm () {
         this.showForm = !this.showForm
