@@ -44,13 +44,7 @@
     },
     head () {
       return {
-        title: this.episode.show_title,
-        script: [
-          { src: 'https://web-player.art19.com/assets/current.js' }
-        ],
-        link: [
-          { rel: 'stylesheet', href: 'https://web-player.art19.com/assets/current.css' }
-        ]
+        title: this.episode.show_title
       }
     },
     components: {

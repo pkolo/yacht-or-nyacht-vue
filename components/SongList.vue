@@ -4,6 +4,7 @@
       <song-list-filter v-model="filterText"/>
       <song-list-slider v-model="value" />
     </div>
+
     <div class="song-list-header">
       <span class="num" @click="songSort('yachtski')">Yachtski</span>
       <div>
@@ -17,6 +18,7 @@
       <span class="num hidden-sm" @click="songSort('scores.dave')">Dave</span>
       <span class="num hidden-sm" @click="songSort('episodes[0].air_date')">{{/^\/admin(\/|$)/.test($route.fullPath) ? '' : 'Ep #'}}</span>
     </div>
+
     <div class="song-list">
       <div class="song" v-for="song in sortedSongs" v-show="songSwitch(song.title, song.artists, song.featured_artists, song.yachtski)" >
         <song-list-item :song="song" :altColumnKey="altColumn.key" />

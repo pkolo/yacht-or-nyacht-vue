@@ -1,7 +1,7 @@
 <template>
   <div class="content-section">
     <div class="podcast-player">
-      <div class="art19-web-player awp-medium awp-theme-light-blue" :data-primary-color="color" :data-episode-id="episode.data_id"></div>
+      <iframe :src="episodeLink()" width="100%" height="180px" frameborder="0"></iframe>
     </div>
 
     <div class="air-date">
@@ -15,13 +15,17 @@
     props: {
       episode: Object,
       color: String
+    },
+    methods: {
+      episodeLink () {
+        return `https://omny.fm/shows/beyond-yacht-rock/${this.episode.data_id}/embed`
+      }
     }
   }
 </script>
 
 <style>
   .air-date {
-    margin-top: -15px;
     text-align: right;
     font-size: 14px;
     color: #999;
