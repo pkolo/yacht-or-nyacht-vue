@@ -15,8 +15,8 @@
       return {
         yrLinks: [
           {
-            title: 'Beyond Yacht Rock',
-            url: 'http://www.feralaudio.com/show/beyond-yacht-rock/'
+            title: 'Beyond Yacht Rock Podcast',
+            url: 'https://starburns.audio/podcasts/beyond-yacht-rock/'
           },
           {
             title: 'Yacht Or Nyacht Stats',
