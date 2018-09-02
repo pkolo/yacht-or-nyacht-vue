@@ -28,7 +28,7 @@ module.exports = {
   modules: [
     // Simple usage
     ['@nuxtjs/google-analytics', {
-      id: process.env.ANALYTICS
+      id: 'UA-100779074-1'
     }]
   ],
   build: {
@@ -48,7 +48,7 @@ module.exports = {
     vendor: ['axios', 'vue-slider-component']
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'http://yacht-or-nyacht-api.herokuapp.com/api/v1'
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000/api/v1/'
   },
   router: {
     middleware: ['auth'],
