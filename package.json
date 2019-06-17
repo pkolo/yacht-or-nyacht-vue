@@ -22,6 +22,7 @@
     "lodash": "^4.17.4",
     "nuxt": "^1.0.0-rc11",
     "vue-no-ssr": "^0.2.1",
+    "vue-recaptcha": "^1.1.1",
     "vue-slider-component": "^2.4.5"
   },
   "devDependencies": {
