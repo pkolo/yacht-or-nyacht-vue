@@ -1,6 +1,6 @@
 <template>
   <div class="request-container">
-    <form @submit.prevent="submit" class="request-form" v-if="!this.result">
+    <form @submit.prevent="onSubmit" class="request-form" v-if="!this.result">
       <div class="request-form-header">
         Yachtski Request Form
       </div>
@@ -38,7 +38,16 @@
         </div>
       </div>
 
+
       <div class="submit-button" style="text-align: center;">
+        <vue-recaptcha
+          ref="invisibleRecaptcha"
+          @verify="onVerify"
+          @expired="onExpired"
+          size="invisible"
+          sitekey="6LdMO6kUAAAAAHyTaXA5EL95TFn2atv5Rvf-7HOC">
+        </vue-recaptcha>
+
         <button type="submit">Submit</button>
       </div>
     </form>
@@ -57,6 +66,7 @@
 
 <script>
   import axios from '~/plugins/axios'
+  import VueRecaptcha from 'vue-recaptcha'
 
   export default {
     data () {
@@ -75,9 +85,13 @@
     },
     head () {
       return {
-        title: 'Yachtki Request Form'
+        title: 'Yachtki Request Form',
+        script: [
+          { src: 'https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit', async: true, defer: true }
+        ]
       }
     },
+    components: { VueRecaptcha },
     methods: {
       submit () {
         this.validateForm()
@@ -114,6 +128,18 @@
       },
       clearErrors () {
         this.errors = []
+      },
+      onSubmit () {
+        this.$refs.invisibleRecaptcha.execute()
+      },
+      onVerify (response) {
+        this.submit()
+      },
+      onExpired () {
+        console.log('Expired')
+      },
+      resetRecaptcha () {
+        this.$refs.recaptcha.reset() // Direct call reset method
       }
     }
   }
