@@ -23,6 +23,7 @@ module.exports = {
   */
   plugins: [
     { src: '~plugins/vue-slider-component.js', ssr: false },
+    { src: '~plugins/vue-moment.js' },
     '~/api/init.js'
   ],
   modules: [
@@ -73,7 +74,7 @@ module.exports = {
           name: 'personnel-wild',
           path: '/personnel/:id?/*',
           component: './pages/personnel/_id.vue'
-        },
+        }
       ])
     }
   }

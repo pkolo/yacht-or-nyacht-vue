@@ -6,7 +6,19 @@
       </div>
 
       <div class="content">
-        <a href="" @click="logOut">logout</a>
+        <a href="" @click="logOut">Logout</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="header">
+        Requests
+      </div>
+
+      <div class="content">
+        <div>
+          <a href="/admin/requests">All Requests</a>
+        </div>
       </div>
     </div>
 
@@ -43,7 +55,7 @@
 <style>
   .sidebar-container {
     padding: 20px;
-    background: slategrey;
+    background: rgb(87,187,138);
     color: #fff;
   }
 
@@ -61,5 +73,9 @@
   .sidebar-section .content {
     margin-left: 10px;
     font-weight: 600;
+  }
+
+  .sidebar-section a {
+    color: #fff;
   }
 </style>
