@@ -19,7 +19,7 @@
     "caniuse-lite": "^1.0.30000697",
     "cookie": "^0.3.1",
     "js-cookie": "^2.2.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "nuxt": "^1.0.0-rc11",
     "vue-moment": "^4.0.0",
     "vue-no-ssr": "^0.2.1",
