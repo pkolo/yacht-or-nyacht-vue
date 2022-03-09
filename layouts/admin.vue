@@ -9,20 +9,16 @@
         <nuxt/>
       </div>
     </div>
-
-    <site-footer/>
   </div>
 </template>
 
 <script>
   import SiteHeader from '../components/SiteHeader'
-  import SiteFooter from '../components/SiteFooter'
   import AdminSidebar from '../components/AdminSidebar'
 
   export default {
     components: {
       SiteHeader,
-      SiteFooter,
       AdminSidebar
     }
   }

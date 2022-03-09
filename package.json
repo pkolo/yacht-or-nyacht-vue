@@ -2,7 +2,7 @@
   "name": "yacht-or-nyacht-vue",
   "version": "1.0.0",
   "description": "The foremost authority on whether or not a given song is Yacht Rock... or Nyacht.",
-  "author": "Patrick Kolodgy <pkolodgy@gmail.com>",
+  "author": "Patti Cola",
   "private": true,
   "scripts": {
     "dev": "PORT=8080 nuxt",
